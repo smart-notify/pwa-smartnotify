@@ -1,4 +1,5 @@
 import classes from "../css-modules/LoginRegister.module.css";
+import { Link } from "react-router-dom";
 
 function LoginRegisterScreen() {
   return (
@@ -8,8 +9,8 @@ function LoginRegisterScreen() {
         <span className={classes.text}>
           Revolucione o gerenciamento de sua encomenda
         </span>
-        <button className={classes.loginButton}>Login</button>
-        <button className={classes.registerButton}>Cadastro</button>
+        <Link to="/" className={classes.loginButton}> Login </Link>
+        <Link to="/" className={classes.registerButton}> Cadastro </Link>
       </div>
     </div>
   );
