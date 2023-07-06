@@ -1,14 +1,15 @@
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import App from './App';
 import SplashScreen from './routes/SplashScreen'; 
+import LoginRegisterScreen from './routes/LoginRegisterScreen';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <SplashScreen />,
-      }
+      },
+      {
+        path: '/login',
+        element: <LoginRegisterScreen />,
+      },
     ]
   }
 ]

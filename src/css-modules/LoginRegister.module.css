@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.loginBackground{
+  background-image: url("../assets/tela-de-fundo/condominios.png");
+  background-color: #03A9F4;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login{
+  background-color: #081216;
+  max-width: 100%;
+  width: 100%;
+  height: 400px;
+  position: fixed;
+  bottom: 0;
+  border-top-left-radius: 6%;
+  border-top-right-radius: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.loginButton,
+.registerButton{
+  font-weight: 700;
+  font-size: 16px;
+  width: 50%;
+  background-color: #03A9F4;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.title{
+  font-family: Roboto;
+}
+
+.text,
+.title,
+.loginButton,
+.registerButton{
+  color: #fff;
+}
