@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function LoginRegisterScreen() {
   return (
-    <div className={classes.loginBackground}>
-      <div className={classes.login}>
+    <div className={classes.loginRegisterBackground}>
+      <div className={classes.loginRegister}>
         <h1 className={classes.title}>SmartNotify</h1>
         <span className={classes.text}>
           Revolucione o gerenciamento de sua encomenda

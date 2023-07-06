@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.loginBackground{
+.loginRegisterBackground{
   background-image: url("../assets/tela-de-fundo/condominios.png");
   background-color: #03A9F4;
   background-size: cover;
   height: 100vh;
 }
 
-.login{
+.loginRegister{
   background-color: #081216;
   max-width: 100%;
   width: 100%;
