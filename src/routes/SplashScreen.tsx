@@ -1,15 +1,13 @@
 import React from 'react';
 import Logo from '../assets/icones/logo.svg'
 
+import classes from '../css-modules/SplashScreen.module.css';
+
 function SplashScreen() {
   return (
-    <>
-      <picture>
-        <source media="(max-width: 800px)" srcSet={Logo} />
-
-        <img src={Logo} width={1280} height={1600} alt="Logo" />
-      </picture>
-    </>
+    <div className={classes.splash}>
+        <img className={classes.splash} src={Logo} width={140} height={100} alt="Logo" />
+    </div>
   );
 }
 
