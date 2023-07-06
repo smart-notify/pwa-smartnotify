@@ -1,13 +1,14 @@
 .splash{
   background-color: #081216;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
-.splashLogo{
-  width: 100%;
-  max-width: 200px;
+.splash img{
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
 }
