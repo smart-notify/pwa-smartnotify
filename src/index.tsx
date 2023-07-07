@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import SplashScreen from './routes/SplashScreen'; 
 import LoginRegisterScreen from './routes/LoginRegisterScreen';
+import Login from './routes/Login';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: '/acesso',
         element: <LoginRegisterScreen />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
       },
     ]
   }
