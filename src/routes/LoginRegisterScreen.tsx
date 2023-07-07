@@ -11,7 +11,7 @@ function LoginRegisterScreen() {
           Revolucione o gerenciamento de sua encomenda
         </span>
         <Link to="/login" className={global.loginButton}> Login </Link>
-        <Link to="/" className={global.registerButton}> Cadastro </Link>
+        <Link to="/register" className={global.registerButton}> Cadastro </Link>
       </div>
     </div>
   );
