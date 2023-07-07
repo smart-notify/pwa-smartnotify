@@ -10,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import SplashScreen from './routes/SplashScreen'; 
 import LoginRegisterScreen from './routes/LoginRegisterScreen';
-import Login from './routes/Login';
+import Login from './routes/LoginScreen';
 
 const router = createBrowserRouter([
   {
