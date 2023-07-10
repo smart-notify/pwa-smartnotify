@@ -13,3 +13,20 @@
   cursor: pointer;
   color: white;
 }
+
+.background{
+  background-color: #081216;
+}
+
+.passwordMatchError{
+  border: 1px solid red;
+}
+
+.backButton{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}

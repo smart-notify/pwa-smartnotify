@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 
 import classes from "../css-modules/Login.module.css";
-import global from "../css-modules/global.module.css";
+import global from "../css-modules/Global.module.css";
 import { Link } from "react-router-dom";
 import voltar from "../assets/icones/icone-voltar.svg";
 import logo from "../assets/icones/logo.svg";
 
 function Login() {
-  const [condominio, setCondominio] = useState("");
-  const [senha, setSenha] = useState("");
+  const [condominium, setCondominium] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleCondominioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCondominio(event.target.value);
+  const handlecondominiumChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCondominium(event.target.value);
   };
 
-  const handleSenhaChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSenha(event.target.value);
+  const handlepasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(condominio, senha);
+    console.log(condominium, password);
   };
 
   return (
     <div className={classes.loginBackground}>
-      <Link to="/acesso" className={classes.backButton}>
+      <Link to="/acesso" className={global.backButton}>
         <img src={voltar} width={40} height={40} alt="Logo" />
       </Link>
       <div className={classes.loginContent}>
@@ -36,17 +36,17 @@ function Login() {
         autoComplete="off" 
         className={classes.loginForm}>
           <input
-          onChange={handleCondominioChange}
-          value={condominio}
+          onChange={handlecondominiumChange}
+          value={condominium}
           type="text" 
           placeholder="Condomínio" 
           required/>
 
           <input 
-          onChange={handleSenhaChange}
-          value={senha}
+          onChange={handlepasswordChange}
+          value={password}
           type="password" 
-          placeholder="Senha" 
+          placeholder="password" 
           required/>
 
           <input 

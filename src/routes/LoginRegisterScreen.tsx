@@ -1,5 +1,5 @@
 import classes from "../css-modules/LoginRegister.module.css";
-import global from "../css-modules/global.module.css";
+import global from "../css-modules/Global.module.css";
 import { Link } from "react-router-dom";
 
 function LoginRegisterScreen() {

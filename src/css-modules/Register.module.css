@@ -1,0 +1,38 @@
+.redInput{
+    color: red;
+}
+
+.registerBackground{
+    background-color: #081216;
+}
+
+.registerContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    height: 100vh;
+}
+
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.registerForm input {
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.8rem;
+    width: 100%;
+}
+
+.registerForm input:focus {
+    outline: none;
+    border-color: #03A9F4;
+    background: rgb(226, 226, 226);
+    box-shadow: 0 0 0 2px #03A9F4;
+}
