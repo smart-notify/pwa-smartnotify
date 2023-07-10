@@ -12,6 +12,7 @@ import SplashScreen from './routes/SplashScreen';
 import LoginRegisterScreen from './routes/LoginRegisterScreen';
 import Login from './routes/LoginScreen';
 import Register from './routes/RegisterScreen';
+import Main from './routes/MainScreen';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />,
+      },
+      {
+        path: '/main',
+        element: <Main />,
       },
     ]
   }
