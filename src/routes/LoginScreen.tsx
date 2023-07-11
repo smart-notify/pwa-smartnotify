@@ -25,7 +25,7 @@ function Login() {
 
   return (
     <div className={classes.loginBackground}>
-      <Link to="/acesso" className={global.backButton}>
+      <Link to="/access" className={global.backButton}>
         <img src={voltar} width={40} height={40} alt="Logo" />
       </Link>
       <div className={classes.loginContent}>
