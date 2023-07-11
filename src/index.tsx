@@ -13,6 +13,7 @@ import LoginRegisterScreen from './routes/LoginRegisterScreen';
 import Login from './routes/LoginScreen';
 import Register from './routes/RegisterScreen';
 import Main from './routes/MainScreen';
+import Notify from './routes/NotifyScreen';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/main',
         element: <Main />,
+      },
+      {
+        path: '/notify',
+        element: <Notify />,
       },
     ]
   }
