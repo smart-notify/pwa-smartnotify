@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <SplashScreen />,
       },
       {
-        path: '/acesso',
+        path: '/access',
         element: <LoginRegisterScreen />,
       },
       {
