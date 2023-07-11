@@ -11,13 +11,13 @@ function MainMenu() {
     <div className={classes.mainMenu}>
         <div className={classes.mainMenuContent}>
           <div className={classes.menuOptions}>
-            <Link to="/" className={classes.encomenda}>
+            <Link to="/main" className={classes.encomenda}>
               <img src={encomenda} alt="Encomenda" />
               <span>Encomendas</span>
             </Link>
           </div>
           <div className={classes.menuOptions}>
-            <Link to="/" className={classes.notificacao}>
+            <Link to="/notify" className={classes.notificacao}>
               <img src={notificacao} alt="Notificação" />
               <span>Notificação</span>
             </Link>

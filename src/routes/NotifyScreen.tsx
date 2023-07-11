@@ -1,8 +1,10 @@
-import React from 'react'
+import MainMenu from "../components/MainMenu"
 
 function NotifyScreen() {
   return (
-    <div>NotifyScreen</div>
+    <div>
+      <MainMenu />
+    </div>
   )
 }
 
