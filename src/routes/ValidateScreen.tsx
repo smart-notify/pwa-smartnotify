@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useParams } from "react-router-dom"
 
 import BackButton from "../components/BackButton"
@@ -7,8 +8,16 @@ import global from "../css-modules/Global.module.css"
 
 function ValidateScreen() {
   const { id } = useParams<{ id: string }>();
+  const [code , setCode] = useState("");
 
-  console.log(`id: ${id}`);
+  const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCode(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(`id: ${id}, \ncode: ${code}`);
+  };
 
   return (
     <div>
@@ -20,11 +29,18 @@ function ValidateScreen() {
           alt="Validação" 
           className={classes.validateIcon}/>
           <p>Insira o código de validação:</p>
-          <form action="" autoComplete="off" className={classes.validateForm}>
+          <form 
+          action="" 
+          autoComplete="off" 
+          className={classes.validateForm}
+          onSubmit={handleSubmit}
+          >
             <input 
             type="text" 
             placeholder="Código" 
             maxLength={4}
+            value={code}
+            onChange={handleCodeChange}
             required />
             <input 
             type="submit" 
