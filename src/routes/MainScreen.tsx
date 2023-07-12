@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import classes from "../css-modules/Main.module.css";
-import { Link } from "react-router-dom";
-import adcEncomenda from "../assets/icones/icone-adcEncomenda.svg";
-import opcoes from "../assets/icones/icone-opcoes.svg";
 import MainMenu from "../components/MainMenu";
+import ValidateIcon from "../components/OptionsIcon";
 
 // Consumindo api do git hub apenas para popular o front
 export interface Member {
@@ -47,9 +45,7 @@ function MainScreen() {
                     <span>{user.html_url}</span>
                   </div>
                 </div>
-                <Link to="" className={classes.options}>
-                  <img src={opcoes} alt="Opções" width={50} height={50} />
-                </Link>
+                <ValidateIcon id={user.id}/>
               </div>
             </li>
           );

@@ -10,10 +10,11 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import SplashScreen from './routes/SplashScreen'; 
 import LoginRegisterScreen from './routes/LoginRegisterScreen';
-import Login from './routes/LoginScreen';
-import Register from './routes/RegisterScreen';
-import Main from './routes/MainScreen';
-import Notify from './routes/NotifyScreen';
+import LoginScreen from './routes/LoginScreen';
+import RegisterScreen from './routes/RegisterScreen';
+import MainScreen from './routes/MainScreen';
+import NotifyScreen from './routes/NotifyScreen';
+import ValidateScreen from './routes/ValidateScreen';
 
 const DelayComponentTransition: React.FC<{ from: React.ComponentType<any>, to: string, delay: number }> = ({ from: FromComponent, to, delay }) => {
   const navigate = useNavigate();
@@ -36,8 +37,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        /* element: <SplashScreen /> */
-        element: <DelayComponentTransition from={SplashScreen} to="/access" delay={2000} />
+        element: <DelayComponentTransition 
+        from={SplashScreen} 
+        to="/access" 
+        delay={2000} />
       },
       {
         path: '/access',
@@ -45,19 +48,23 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login />,
+        element: <LoginScreen />,
       },
       {
         path: '/register',
-        element: <Register />,
+        element: <RegisterScreen />,
       },
       {
         path: '/main',
-        element: <Main />,
+        element: <MainScreen />,
       },
       {
         path: '/notify',
-        element: <Notify />,
+        element: <NotifyScreen />,
+      },
+      {
+        path: '/validate/:id',
+        element: <ValidateScreen />,
       },
     ]
   }

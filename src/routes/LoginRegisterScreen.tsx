@@ -10,8 +10,14 @@ function LoginRegisterScreen() {
         <span className={classes.text}>
           Revolucione o gerenciamento de sua encomenda
         </span>
-        <Link to="/login" className={global.loginButton}> Login </Link>
-        <Link to="/register" className={global.registerButton}> Cadastro </Link>
+        <Link to="/login" className={global.button}>
+          {" "}
+          Login{" "}
+        </Link>
+        <Link to="/register" className={global.button}>
+          {" "}
+          Cadastro{" "}
+        </Link>
       </div>
     </div>
   );

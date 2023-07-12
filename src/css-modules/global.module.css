@@ -1,12 +1,11 @@
-.loginButton,
-.registerButton{
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 16px;
   width: 50%;
-  background-color: #03A9F4;
+  background-color: #03a9f4;
   border: none;
   border-radius: 5px;
   height: 50px;
@@ -14,19 +13,24 @@
   color: white;
 }
 
-.background{
+.background {
   background-color: #081216;
 }
 
-.passwordMatchError{
+.passwordMatchError {
   border: 1px solid red;
 }
 
-.backButton{
+.backButton {
   position: absolute;
   top: 20px;
   left: 20px;
   color: #fff;
   font-size: 20px;
   cursor: pointer;
+}
+
+#optionsImage {
+  width: 30px;
+  height: 30px;
 }

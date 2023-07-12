@@ -6,6 +6,8 @@ import classes from "../css-modules/Notify.module.css";
 
 import tirarFoto from "../assets/icones/icone-foto.svg";
 
+import BackButton from "../components/BackButton";
+
 const FACING_MODE_ENVIRONMENT = "environment";
 
 function NotifyScreen() {
@@ -48,6 +50,7 @@ function NotifyScreen() {
   return (
     <>
       <div className={classes.webcamContainer}>
+        <BackButton to="/main" />
         <div className={classes.webcamImg}>
           {image === "" ? (
             <Webcam

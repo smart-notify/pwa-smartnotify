@@ -11,7 +11,9 @@ function Login() {
   const [condominium, setCondominium] = useState("");
   const [password, setPassword] = useState("");
 
-  const handlecondominiumChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlecondominiumChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setCondominium(event.target.value);
   };
 
@@ -26,36 +28,36 @@ function Login() {
 
   return (
     <div className={classes.loginBackground}>
-      <BackButton />
+      <BackButton to="/access"/>
       <div className={classes.loginContent}>
         <img src={logo} width={140} height={100} alt="Logo" />
-        <form 
-        onSubmit={handleSubmit}
-        action="" 
-        autoComplete="off" 
-        className={classes.loginForm}>
+        <form
+          onSubmit={handleSubmit}
+          action=""
+          autoComplete="off"
+          className={classes.loginForm}
+        >
           <input
-          onChange={handlecondominiumChange}
-          value={condominium}
-          type="text" 
-          placeholder="Condomínio" 
-          required/>
+            onChange={handlecondominiumChange}
+            value={condominium}
+            type="text"
+            placeholder="Condomínio"
+            required
+          />
 
-          <input 
-          onChange={handlepasswordChange}
-          value={password}
-          type="password" 
-          placeholder="password" 
-          required/>
+          <input
+            onChange={handlepasswordChange}
+            value={password}
+            type="password"
+            placeholder="password"
+            required
+          />
 
-          <input 
-          type="submit" 
-          value="Entrar" 
-          className={global.loginButton} />
+          <input type="submit" value="Entrar" className={global.button} />
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

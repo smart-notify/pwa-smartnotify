@@ -19,7 +19,6 @@ interface ErrorState {
 }
 
 function RegisterScreen() {
-
   const [input, setInput] = useState<InputState>({
     condominium: "",
     password: "",
@@ -57,8 +56,7 @@ function RegisterScreen() {
           if (!value) {
             stateObj[name] = "Insira a senha.";
           } else if (input.confirmPassword && value !== input.confirmPassword) {
-            stateObj["confirmPassword"] =
-              "Senhas não coincidem.";
+            stateObj["confirmPassword"] = "Senhas não coincidem.";
           } else {
             stateObj["confirmPassword"] = input.confirmPassword
               ? ""
@@ -94,10 +92,7 @@ function RegisterScreen() {
       </Link>
       <div className={classes.registerContent}>
         <img src={logo} width={140} height={100} alt="Logo" />
-        <form 
-        className={classes.registerForm}
-        onSubmit={handleSubmit}
-        >
+        <form className={classes.registerForm} onSubmit={handleSubmit}>
           <input
             type="text"
             name="condominium"
@@ -106,7 +101,9 @@ function RegisterScreen() {
             onChange={onInputChange}
             onBlur={validateInput}
           />
-          {error.condominium && <span className={classes.redInput}>{error.condominium}</span>}
+          {error.condominium && (
+            <span className={classes.redInput}>{error.condominium}</span>
+          )}
 
           <input
             type="password"
@@ -116,7 +113,9 @@ function RegisterScreen() {
             onChange={onInputChange}
             onBlur={validateInput}
           />
-          {error.password && <span className={classes.redInput}>{error.password}</span>}
+          {error.password && (
+            <span className={classes.redInput}>{error.password}</span>
+          )}
 
           <input
             type="password"
@@ -130,12 +129,11 @@ function RegisterScreen() {
             <span className={classes.redInput}>{error.confirmPassword}</span>
           )}
 
-          <input type="submit" value="Cadastrar" className={global.registerButton} />
+          <input type="submit" value="Cadastrar" className={global.button} />
         </form>
       </div>
     </div>
   );
-
 }
 
 export default RegisterScreen;

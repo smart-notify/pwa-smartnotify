@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-.loginRegisterBackground{
+.loginRegisterBackground {
   background-image: url("../assets/tela-de-fundo/condominios.png");
-  background-color: #03A9F4;
+  background-color: #03a9f4;
   background-size: cover;
   height: 100vh;
 }
 
-.loginRegister{
+.loginRegister {
   background-color: #081216;
   max-width: 100%;
   width: 100%;
@@ -23,13 +23,13 @@
   gap: 40px;
 }
 
-.title{
+.title {
   font-family: Roboto;
 }
 
 .text,
 .title,
-.loginButton,
-.registerButton{
+.button,
+.button {
   color: #fff;
 }
