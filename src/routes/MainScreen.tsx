@@ -56,16 +56,6 @@ function MainScreen() {
         })}
       </ul>
 
-      <div className={classes.adcEncomenda}>
-        <Link to="/">
-          <img
-            src={adcEncomenda}
-            alt="Adicionar Encomenda"
-            width={70}
-            height={70}
-          />
-        </Link>
-      </div>
       <MainMenu />
     </div>
   );
