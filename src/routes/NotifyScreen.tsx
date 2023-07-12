@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { createWorker } from "tesseract.js";
 import Tesseract from 'tesseract.js';
 import Webcam from "react-webcam";
 
@@ -10,9 +9,6 @@ import tirarFoto from "../assets/icones/icone-foto.svg";
 const FACING_MODE_ENVIRONMENT = "environment";
 
 function NotifyScreen() {
-  const worker = createWorker({
-    logger: (m) => console.log(m),
-  });
 
   const webcamRef = React.useRef<Webcam>(null);
   const [image, setImage] = useState("");
@@ -72,7 +68,6 @@ function NotifyScreen() {
         </div>
         <button className={classes.webcamButton}>
           <img src={tirarFoto} alt="Tirar foto" onClick={capture} />
-          <span className={classes.result}>{result}</span>
         </button>
 
       </div>

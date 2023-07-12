@@ -34,16 +34,3 @@
     border: none;
     cursor: pointer;
 }
-
-.result{
-    width: 50%;
-    height: 5%;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-90%, -230%);
-    background-color: red;
-    border: none;
-    cursor: pointer;
-}
