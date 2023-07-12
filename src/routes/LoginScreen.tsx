@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import classes from "../css-modules/Login.module.css";
 import global from "../css-modules/Global.module.css";
 import { Link } from "react-router-dom";
-import voltar from "../assets/icones/icone-voltar.svg";
 import logo from "../assets/icones/logo.svg";
+
+import BackButton from "../components/BackButton";
 
 function Login() {
   const [condominium, setCondominium] = useState("");
@@ -25,9 +26,7 @@ function Login() {
 
   return (
     <div className={classes.loginBackground}>
-      <Link to="/access" className={global.backButton}>
-        <img src={voltar} width={40} height={40} alt="Logo" />
-      </Link>
+      <BackButton />
       <div className={classes.loginContent}>
         <img src={logo} width={140} height={100} alt="Logo" />
         <form 
