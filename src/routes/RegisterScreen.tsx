@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 
-import global from "../css-modules/global.module.css";
+import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/Register.module.css";
 import { Link } from "react-router-dom";
 import voltar from "../assets/icones/icone-voltar.svg";

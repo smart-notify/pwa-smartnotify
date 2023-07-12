@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import classes from "../css-modules/Login.module.css";
-import global from "../css-modules/global.module.css";
+import global from "../css-modules/Global.module.css";
 import { Link } from "react-router-dom";
 import voltar from "../assets/icones/icone-voltar.svg";
 import logo from "../assets/icones/logo.svg";
