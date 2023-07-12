@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         /* element: <SplashScreen /> */
-        element: <DelayComponentTransition from={SplashScreen} to="/acesso" delay={2000} />
+        element: <DelayComponentTransition from={SplashScreen} to="/access" delay={2000} />
       },
       {
         path: '/access',
