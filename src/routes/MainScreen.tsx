@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import classes from "../css-modules/Main.module.css";
 import { Link } from "react-router-dom";
-import encomenda from "../assets/icones/icone-encomendas.svg";
-import notificacao from "../assets/icones/icone-notificacoes.svg";
-import sindico from "../assets/icones/icone-sindico.svg";
 import adcEncomenda from "../assets/icones/icone-adcEncomenda.svg";
 import opcoes from "../assets/icones/icone-opcoes.svg";
+import MainMenu from "../components/MainMenu";
 
 // Consumindo api do git hub apenas para popular o front
 export interface Member {
@@ -68,28 +66,7 @@ function MainScreen() {
           />
         </Link>
       </div>
-      <div className={classes.mainMenu}>
-        <div className={classes.mainMenuContent}>
-          <div className={classes.menuOptions}>
-            <Link to="/" className={classes.encomenda}>
-              <img src={encomenda} alt="Encomenda" />
-              <span>Encomendas</span>
-            </Link>
-          </div>
-          <div className={classes.menuOptions}>
-            <Link to="/" className={classes.notificacao}>
-              <img src={notificacao} alt="Notificação" />
-              <span>Notificação</span>
-            </Link>
-          </div>
-          <div className={classes.menuOptions}>
-            <Link to="/" className={classes.conta}>
-              <img src={sindico} alt="Síndico" />
-              <span>Conta</span>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <MainMenu />
     </div>
   );
 }

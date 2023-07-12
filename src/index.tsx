@@ -13,6 +13,7 @@ import LoginRegisterScreen from './routes/LoginRegisterScreen';
 import Login from './routes/LoginScreen';
 import Register from './routes/RegisterScreen';
 import Main from './routes/MainScreen';
+import Notify from './routes/NotifyScreen';
 
 const DelayComponentTransition: React.FC<{ from: React.ComponentType<any>, to: string, delay: number }> = ({ from: FromComponent, to, delay }) => {
   const navigate = useNavigate();
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: '/main',
         element: <Main />,
+      },
+      {
+        path: '/notify',
+        element: <Notify />,
       },
     ]
   }
