@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../assets/icones/logo.svg'
 
-import classes from '../css-modules/SplashScreen.module.css';
+import classes from '../css-modules/Splash.module.css';
 
 function SplashScreen() {
   return (

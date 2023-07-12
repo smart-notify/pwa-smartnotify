@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Webcam from "react-webcam";
 
+import classes from "../css-modules/Notify.module.css";
+
+import tirarFoto from "../assets/icones/icone-foto.svg";
 
 const FACING_MODE_ENVIRONMENT = "environment";
 
@@ -8,28 +11,33 @@ function NotifyScreen() {
   const webcamRef = React.useRef<Webcam>(null);
   const [image, setImage] = useState("");
 
-  const [facingMode, setFacingMode] = React.useState(FACING_MODE_ENVIRONMENT);
+  const [facingMode] = React.useState(FACING_MODE_ENVIRONMENT);
 
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current?.getScreenshot();
-    if (imageSrc){setImage(imageSrc);}
+    if (imageSrc) {
+      setImage(imageSrc);
+    }
   }, [webcamRef]);
 
   let videoConstraints: MediaTrackConstraints = {
     facingMode: facingMode,
     width: 470,
-    height: 320
+    height: 320,
   };
 
-  console.log(facingMode + videoConstraints);
+  console.log(
+    facingMode 
+    + videoConstraints 
+    + image);
 
   return (
     <>
-      <div className="webcam-container">
-        <div className="webcam-img">
+      <div className={classes.webcamContainer}>
+        <div className={classes.webcamImg}>
           {image === "" ? (
             <Webcam
-              className="webcam"
+              className={classes.webcam}
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
@@ -40,11 +48,13 @@ function NotifyScreen() {
             <img
               src={image}
               alt="Scan"
-              style={{ width: "auto", height: "auto" }}
+              className={classes.webcam}
             />
           )}
         </div>
-        <button >Tirar foto</button>
+        <button className={classes.webcamButton}>
+          <img src={tirarFoto} alt="Tirar foto" onClick={capture} />
+        </button>
       </div>
     </>
   );
