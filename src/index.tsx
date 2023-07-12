@@ -1,8 +1,8 @@
 import './index.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useNavigate } from 'react-router-dom';
 
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
@@ -14,6 +14,20 @@ import Login from './routes/LoginScreen';
 import Register from './routes/RegisterScreen';
 import Main from './routes/MainScreen';
 
+const DelayComponentTransition: React.FC<{ from: React.ComponentType<any>, to: string, delay: number }> = ({ from: FromComponent, to, delay }) => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate(to);
+    }, delay);
+    
+    return () => clearTimeout(timer);
+  }, [ to, delay, navigate]);
+
+  return FromComponent ? <FromComponent /> : null;
+}
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,7 +35,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <SplashScreen />,
+        /* element: <SplashScreen /> */
+        element: <DelayComponentTransition from={SplashScreen} to="/acesso" delay={2000} />
       },
       {
         path: '/access',
