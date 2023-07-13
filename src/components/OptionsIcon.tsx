@@ -6,12 +6,13 @@ import opcoes from "../assets/icones/icone-opcoes.svg";
 
 interface OptionsIconProps {
   id: number;
+  name: string;
 }
 
-function OptionsIcon({ id }: OptionsIconProps) {
+function OptionsIcon({ id, name }: OptionsIconProps) {
   return (
     <>
-      <Link to={`/validate/${id}`}>
+      <Link to={`/validate/${id}/${name}`}>
         <div className={global.options}>
           <img id={global.optionsImage} src={opcoes} alt="Opções" width={30} height={30} />
         </div>

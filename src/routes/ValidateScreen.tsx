@@ -7,7 +7,7 @@ import validacao from "../assets/icones/icone-validacao.svg"
 import global from "../css-modules/Global.module.css"
 
 function ValidateScreen() {
-  const { id } = useParams<{ id: string }>();
+  const { id, name } = useParams<{ id: string, name: string}>();
   const [code , setCode] = useState("");
 
   const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,7 +16,7 @@ function ValidateScreen() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(`id: ${id}, \ncode: ${code}`);
+    console.log(`id: ${id}, \ncode: ${code}, \nname: ${name}`);
   };
 
   return (
@@ -28,7 +28,7 @@ function ValidateScreen() {
           src={validacao} 
           alt="Validação" 
           className={classes.validateIcon}/>
-          <p>Insira o código de validação:</p>
+          <p>Insira o código de validação do(a) {name}:</p>
           <form 
           action="" 
           autoComplete="off" 
