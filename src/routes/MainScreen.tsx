@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import classes from "../css-modules/Main.module.css";
 import MainMenu from "../components/MainMenu";
-import ValidateIcon from "../components/OptionsIcon";
+import OptionsIcon from "../components/OptionsIcon";
 
 // Consumindo api do git hub apenas para popular o front
 export interface Member {
@@ -45,7 +45,7 @@ function MainScreen() {
                     <span>{user.html_url}</span>
                   </div>
                 </div>
-                <ValidateIcon id={user.id}/>
+                <OptionsIcon id={user.id} name={user.login}/>
               </div>
             </li>
           );

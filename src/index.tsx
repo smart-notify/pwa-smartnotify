@@ -63,7 +63,7 @@ const router = createBrowserRouter([
         element: <NotifyScreen />,
       },
       {
-        path: '/validate/:id',
+        path: '/validate/:id/:name',
         element: <ValidateScreen />,
       },
     ]
