@@ -19,17 +19,3 @@
   gap: 20px;
 }
 
-.loginForm input {
-  border: none;
-  border-radius: 0.3rem;
-  padding: 0.8rem;
-  width: 100%;
-}
-
-.loginForm input:focus {
-  outline: none;
-  border-color: #03A9F4;
-  background: rgb(226, 226, 226);
-  box-shadow: 0 0 0 2px #03A9F4;
-}
-
