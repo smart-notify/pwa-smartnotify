@@ -3,7 +3,7 @@ import {useState} from 'react'
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
 
-function AddVerticalResidentForm() {
+function AddHorizontalResidentForm() {
   const [residentName, setResidentName] = useState("");
   const [email, setEmail] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
@@ -63,4 +63,4 @@ function AddVerticalResidentForm() {
   )
 }
 
-export default AddVerticalResidentForm
+export default AddHorizontalResidentForm

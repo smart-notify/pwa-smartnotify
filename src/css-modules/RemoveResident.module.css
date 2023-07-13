@@ -1,0 +1,22 @@
+.removeResidentContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* backdrop-filter: blur(8px); */
+  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.5);
+  gap: 40px;
+}
+
+.removeResidentContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #081216;
+  border-radius: 15px;
+  padding: 30px 40px 30px 40px;
+  white-space: wrap;
+  width: 70%;
+}
