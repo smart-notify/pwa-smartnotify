@@ -41,7 +41,7 @@ function Login() {
             onChange={handlecondominiumChange}
             value={condominium}
             type="text"
-            placeholder="Condomínio"
+            placeholder="Email do condomínio"
             required
           />
 

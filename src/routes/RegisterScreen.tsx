@@ -48,7 +48,7 @@ function RegisterScreen() {
       switch (name) {
         case "condominium":
           if (!value) {
-            stateObj[name] = "Insira o nome do condomínio.";
+            stateObj[name] = "Insira o email do condomínio.";
           }
           break;
 
@@ -96,7 +96,7 @@ function RegisterScreen() {
           <input
             type="text"
             name="condominium"
-            placeholder="Condomínio"
+            placeholder="Email do condomínio"
             value={input.condominium}
             onChange={onInputChange}
             onBlur={validateInput}
