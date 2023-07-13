@@ -52,6 +52,12 @@ function NotifyScreen() {
       <div className={classes.webcamContainer}>
         <BackButton to="/main" />
         <div className={classes.webcamImg}>
+          <div className={classes.imgInstructions}>
+            <p>Com o celular na vertical, 
+            fotografe o bloco, apartamento ou número da casa.
+            </p>
+          </div>
+          
           {image === "" ? (
             <Webcam
               className={classes.webcam}
