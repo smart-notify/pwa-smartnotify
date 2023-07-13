@@ -16,7 +16,8 @@ import MainScreen from './routes/MainScreen';
 import NotifyScreen from './routes/NotifyScreen';
 import ValidateScreen from './routes/ValidateScreen';
 import AccountScreen from './routes/AccountScreen';
-
+import AddResident from './routes/AddResident';
+import RmvResident from './routes/RmvResident';
 
 const DelayComponentTransition: React.FC<{ from: React.ComponentType<any>, to: string, delay: number }> = ({ from: FromComponent, to, delay }) => {
   const navigate = useNavigate();
@@ -71,6 +72,14 @@ const router = createBrowserRouter([
       {
         path: '/account',
         element: <AccountScreen />,
+      },
+      {
+        path: '/add-resident',
+        element: <AddResident />,
+      },
+      {
+        path: '/rmv-resident',
+        element: <RmvResident />,
       }
     ]
   }

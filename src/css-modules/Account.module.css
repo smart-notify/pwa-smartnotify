@@ -10,8 +10,8 @@
   gap: 40px;
 }
 
-.accountAddResident,
-.accountRmvResident{
+.accountAddResidentContainer,
+.accountRmvResidentContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,15 @@
   padding: 30px 40px 30px 40px;
   white-space: wrap;
   width: 70%;
+}
 
+.addResident,
+.rmvResident{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
 }
 
 .accountMessage{
