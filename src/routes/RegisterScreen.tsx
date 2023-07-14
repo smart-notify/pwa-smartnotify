@@ -1,4 +1,5 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
+import { apiUrls } from "../apis/apiUrls";
 
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/Register.module.css";
@@ -96,7 +97,7 @@ function RegisterScreen() {
 
   // Consumir API para cadastro de condomínio
   useEffect(() => {
-    fetch("http://localhost:8080/api/condominium/register", {
+    fetch(apiUrls.registerCondominium, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
