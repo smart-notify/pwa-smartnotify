@@ -6,34 +6,35 @@ import { Link } from "react-router-dom";
 import voltar from "../assets/icones/icone-voltar.svg";
 import logo from "../assets/icones/logo.svg";
 
-interface InputState {
-  condominium: string;
+interface passwordsInput {
   password: string;
   confirmPassword: string;
 }
 
 interface ErrorState {
-  condominium: string;
   password: string;
   confirmPassword: string;
 }
 
 function RegisterScreen() {
-  const [input, setInput] = useState<InputState>({
-    condominium: "",
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+
+  const [passwords, setPasswords] = useState<passwordsInput>({
     password: "",
     confirmPassword: "",
   });
 
   const [error, setError] = useState<ErrorState>({
-    condominium: "",
     password: "",
     confirmPassword: "",
   });
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setInput((prevInput) => ({
+    setPasswords((prevInput) => ({
       ...prevInput,
       [name]: value,
     }));
@@ -46,19 +47,13 @@ function RegisterScreen() {
       const stateObj = { ...prevError, [name]: "" };
 
       switch (name) {
-        case "condominium":
-          if (!value) {
-            stateObj[name] = "Insira o email do condomínio.";
-          }
-          break;
-
         case "password":
           if (!value) {
             stateObj[name] = "Insira a senha.";
-          } else if (input.confirmPassword && value !== input.confirmPassword) {
+          } else if (passwords.confirmPassword && value !== passwords.confirmPassword) {
             stateObj["confirmPassword"] = "Senhas não coincidem.";
           } else {
-            stateObj["confirmPassword"] = input.confirmPassword
+            stateObj["confirmPassword"] = passwords.confirmPassword
               ? ""
               : prevError.confirmPassword;
           }
@@ -67,8 +62,10 @@ function RegisterScreen() {
         case "confirmPassword":
           if (!value) {
             stateObj[name] = "Insira a confirmação da senha.";
-          } else if (input.password && value !== input.password) {
+          } else if (passwords.password && value !== passwords.password) {
             stateObj[name] = "Senhas não coincidem.";
+          } else if (passwords.password && value === passwords.password) {
+            setPassword(passwords.password);
           }
           break;
 
@@ -80,10 +77,43 @@ function RegisterScreen() {
     });
   };
 
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  }
+
+  const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setType(event.target.value);
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(input);
+    console.log(email, password, name, type);
   };
+
+  // Consumir API para cadastro de condomínio
+  useEffect(() => {
+    fetch("http://localhost:8080/api/condominium/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        name,
+        type,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      });
+  }, [email, password, name, type]);
+
 
   return (
     <div className={global.background}>
@@ -95,23 +125,21 @@ function RegisterScreen() {
         <form className={classes.registerForm} onSubmit={handleSubmit}>
           <input
             type="text"
-            name="condominium"
+            name="email"
             placeholder="Email do condomínio"
-            value={input.condominium}
-            onChange={onInputChange}
-            onBlur={validateInput}
+            value={email}
+            onChange={handleEmailChange}
+            required
           />
-          {error.condominium && (
-            <span className={classes.redInput}>{error.condominium}</span>
-          )}
 
           <input
             type="password"
             name="password"
             placeholder="Insira a senha"
-            value={input.password}
+            value={passwords.password}
             onChange={onInputChange}
             onBlur={validateInput}
+            required
           />
           {error.password && (
             <span className={classes.redInput}>{error.password}</span>
@@ -121,13 +149,32 @@ function RegisterScreen() {
             type="password"
             name="confirmPassword"
             placeholder="Insira a confirmação da senha"
-            value={input.confirmPassword}
+            value={passwords.confirmPassword}
             onChange={onInputChange}
             onBlur={validateInput}
+            required
           />
           {error.confirmPassword && (
             <span className={classes.redInput}>{error.confirmPassword}</span>
           )}
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Insira o nome do condomínio"
+            value={name}
+            onChange={handleNameChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="type"
+            placeholder="Tipo vertical ou horizontal"
+            value={type}
+            onChange={handleTypeChange}
+            required
+          />
 
           <input type="submit" value="Cadastrar" className={global.button} />
         </form>
