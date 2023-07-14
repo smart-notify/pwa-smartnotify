@@ -1,5 +1,6 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { apiUrls } from "../apis/apiUrls";
+import { bodyArgs } from "../types/bodyArgs";
 
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/Register.module.css";
@@ -90,30 +91,33 @@ function RegisterScreen() {
     setType(event.target.value);
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(email, password, name, type);
-  };
 
-  // Consumir API para cadastro de condomínio
-  useEffect(() => {
-    fetch(apiUrls.registerCondominium, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-        name,
-        type,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
+    try {
+      const bodyArgs: bodyArgs = {
+        email: email,
+        password: password,
+        name: name,
+        type: type.toUpperCase(),
+      };
+
+      const response = await fetch(apiUrls.registerCondominium, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyArgs),
       });
-  }, [email, password, name, type]);
+      
+      if (response.status === 200) {
+        // Redirecionar para tela de login
+        window.location.href = "/access";
+      } 
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 
   return (
