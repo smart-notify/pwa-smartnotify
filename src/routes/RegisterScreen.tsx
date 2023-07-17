@@ -90,6 +90,7 @@ function RegisterScreen() {
   const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setType(event.target.value);
   }
+  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
