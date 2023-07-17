@@ -1,6 +1,6 @@
 export type bodyArgs = {
-  email: string,
-  password: string,
-  name: string,
-  type: string
+  email?: string,
+  password?: string,
+  name?: string,
+  type?: string
 }

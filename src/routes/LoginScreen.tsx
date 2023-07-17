@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { apiUrls } from "../apis/apiUrls";
+import { bodyArgs } from "../types/bodyArgs";
 
 import classes from "../css-modules/Login.module.css";
 import global from "../css-modules/Global.module.css";
@@ -8,22 +10,53 @@ import logo from "../assets/icones/logo.svg";
 import BackButton from "../components/BackButton";
 
 function Login() {
-  const [condominium, setCondominium] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handlecondominiumChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setCondominium(event.target.value);
+    setEmail(event.target.value);
   };
 
   const handlepasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(condominium, password);
+
+    try {
+      const bodyArgs: bodyArgs = {
+        email: email,
+        password: password,
+      };
+
+      const response = await fetch(apiUrls.loginCondominium, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyArgs),
+      });
+      
+      if (response.status === 200) {
+        // Redirecionar para tela de login
+        window.location.href = "/main";
+      } 
+      response.json().then((data) => {
+        for(let key in data){
+          // Salvando cada atributo do objeto de resposta no cookie
+          document.cookie = `${key}=${data[key]}`;
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+
+    // Limpar os campos do formulário
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -39,7 +72,7 @@ function Login() {
         >
           <input
             onChange={handlecondominiumChange}
-            value={condominium}
+            value={email}
             type="text"
             placeholder="Email do condomínio"
             required
