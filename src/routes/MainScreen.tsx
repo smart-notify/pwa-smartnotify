@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { apiUrls } from "../apis/apiUrls";
-import { ParcelProps } from "../types/parcel"
-import { extractToken } from "../utils/extractToken";
+import { ParcelProps } from "../types/parcel";
+import utilFunctions from "../utils/utilFunctions";
 
 import classes from "../css-modules/Main.module.css";
 import MainMenu from "../components/MainMenu";
@@ -13,7 +13,7 @@ function MainScreen() {
   // Definindo estado de usuário
   const [resident, setResident] = useState<ParcelProps[]>([]);
 
-  const token = extractToken();
+  const token = utilFunctions.extractToken();
 
   // O useEffect é um hook que serve para executar efeitos colaterais em componentes funcionais, ou seja, ele dispara uma função toda vez que uma ou mais variáveis mudam de valor. Assim, é possível executar uma ação sempre que algo acontecer no componente.
   useEffect(() => {
@@ -21,10 +21,10 @@ function MainScreen() {
       try {
         const response = await fetch(apiUrls.parcelGetAll, {
           headers: {
-            "Authorization": `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
-        
+
         if (response.ok) {
           const data = await response.json();
           setResident(data);
@@ -35,7 +35,7 @@ function MainScreen() {
         console.error("Error:", error);
       }
     };
-  
+
     fetchData();
   }, []);
 
@@ -56,7 +56,7 @@ function MainScreen() {
                   </div>
                   <span>{resident.registrationCode}</span>
                 </div>
-                <OptionsIcon id={resident.id} name={resident.residentName}/>
+                <OptionsIcon id={resident.id} name={resident.residentName} />
               </div>
             </li>
           );
