@@ -5,7 +5,7 @@ import global from "../css-modules/Global.module.css";
 import opcoes from "../assets/icones/icone-opcoes.svg";
 
 interface OptionsIconProps {
-  id: number;
+  id: string;
   name: string;
 }
 

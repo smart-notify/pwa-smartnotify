@@ -4,5 +4,5 @@ export type ParcelProps = {
   id: string;
   residentName: string;
   residentEmail: string;
-  registrationCode: number;
+  registrationCode: string;
 }
