@@ -21,7 +21,7 @@ function MainScreen() {
       try {
         const response = await fetch(apiUrls.parcelGetAll, {
           headers: {
-            "Authorization": `Bearer ${token.token}`
+            "Authorization": `Bearer ${token}`
           }
         });
         
