@@ -8,12 +8,12 @@ import MainMenu from "../components/MainMenu";
 import OptionsIcon from "../components/OptionsIcon";
 
 function MainScreen() {
-  const [parcel, setParcel] = useState([]);
 
   // Definindo estado de usuário
   const [resident, setResident] = useState<ParcelProps[]>([]);
 
   const token = utilFunctions.extractToken();
+  console.log(token);
 
   // O useEffect é um hook que serve para executar efeitos colaterais em componentes funcionais, ou seja, ele dispara uma função toda vez que uma ou mais variáveis mudam de valor. Assim, é possível executar uma ação sempre que algo acontecer no componente.
   useEffect(() => {

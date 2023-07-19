@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
 
 import BackButton from "../components/BackButton";
@@ -9,17 +8,14 @@ import addResidentWhite from "../assets/icones/icone-adcResidente-white.svg";
 import AddVerticalResidentForm from "../components/AddVerticalResidentForm";
 import AddHorizontalResidentForm from "../components/AddHorizontalResidentForm";
 
-interface FormState {
-  type: "vertical" | "horizontal";
-}
+import utilFunctions from "../utils/utilFunctions";
 
 function AddResident() {
-  const [formState, setForm] = useState<FormState>({ type: "vertical" });
 
-  const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const type = event.target.value as FormState["type"];
-    setForm({ ...formState, type });
-  };
+  const condominiumType = utilFunctions.extractCondominiumType();
+  const condominiumName = utilFunctions.extractCondominiumName();
+  console.log(condominiumType);
+  console.log(condominiumName);
 
   return (
     <div>
@@ -28,34 +24,30 @@ function AddResident() {
         <div className={classes.addResidentContent}>
           <img src={addResidentWhite} alt="Adicionar morador" />
           <div className={classes.choiceOfCondominium}>
+            {/* Verificar tipo de condomínio é igual a vertical */}
+            {condominiumType === "VERTICAL" && (
             <div className={classes.verticalChoice}>
               <label className={classes.verticalLabel}>
-                <input
-                  type="radio"
-                  value="vertical"
-                  checked={formState.type === "vertical"}
-                  onChange={handleFormChange}
-                />
-                Vertical
+                <span>Condomínio Vertical</span>
+                <span>{condominiumName}</span>
               </label>
             </div>
-            <div className={classes.horizontalChoice}>
-              <label className={classes.horizontalLabel}>
-                <input
-                  type="radio"
-                  value="horizontal"
-                  checked={formState.type === "horizontal"}
-                  onChange={handleFormChange}
-                />
-                Horizontal
-              </label>
-            </div>
+            )}
+            { /* Verificar tipo de condomínio é igual a horizontal */ }
+            {condominiumType === "HORIZONTAL" && (
+              <div className={classes.horizontalChoice}>
+                <label className={classes.horizontalLabel}>
+                  <span>Condomínio Horizontal</span>
+                  <span>{condominiumName}</span>
+                </label>
+              </div>
+            )}
           </div>
-          {formState.type === 'vertical' && (
+          {condominiumType === 'VERTICAL' && (
         // Renderize o formulário para condomínio vertical
         <AddVerticalResidentForm />
       )}
-      {formState.type === 'horizontal' && (
+      {condominiumType === 'HORIZONTAL' && (
         // Renderize o formulário para condomínio horizontal
         <AddHorizontalResidentForm />
       )}

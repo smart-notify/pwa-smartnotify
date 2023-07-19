@@ -1,4 +1,7 @@
 import {useState} from 'react'
+import { apiUrls } from '../apis/apiUrls';
+import { bodyArgs } from '../types/bodyArgs';
+import utilFunctions from '../utils/utilFunctions';
 
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
@@ -7,6 +10,9 @@ function AddHorizontalResidentForm() {
   const [residentName, setResidentName] = useState("");
   const [email, setEmail] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
+
+  const token = utilFunctions.extractToken();
+  console.log(token);
 
   const handleResidentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setResidentName(event.target.value);
@@ -20,9 +26,37 @@ function AddHorizontalResidentForm() {
     setHouseNumber(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(residentName, email, houseNumber);
+    
+    try {
+      const bodyArgs: bodyArgs = {
+        name: residentName,
+        email: email,
+        houseNumber: houseNumber,
+      };
+
+      const response = await fetch(apiUrls.createHouseResident, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(bodyArgs),
+      });
+
+      if (response.status === 200) {
+        // Redirecionar para tela de login
+        window.location.href = "/account";
+      }
+    } catch (error) {
+      console.error(error);
+    }
+
+    // Limpar os campos do formulário
+    setEmail("");
+    setResidentName("");
+    setHouseNumber("");
   };
 
   return (
@@ -52,8 +86,8 @@ function AddHorizontalResidentForm() {
             <input
               onChange={handleNumberChange}
               value={houseNumber}
-              type="number"
-              placeholder="Número da casa"
+              type="text"
+              placeholder="Ex. Casa 1"
               required
             />
 

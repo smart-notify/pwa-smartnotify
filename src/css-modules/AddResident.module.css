@@ -62,3 +62,11 @@
   justify-content: center;
   gap: 10px;
 }
+
+.NotAVerticalCondominium,
+.NotAHorizontalCondominium{
+  display: none;
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
