@@ -1,13 +1,16 @@
+const ngrokUrl = 'https://d263-2804-431-cfc3-c650-eca7-bd34-60ab-590d.ngrok-free.app';
+const localUrl = 'http://localhost:8080';
+
 export const apiUrls = {
   // Rotas da API 
-  registerCondominium: 'http://localhost:8080/api/condominium/register',
-  loginCondominium: 'http://localhost:8080/api/condominium/login',
+  registerCondominium: `${ngrokUrl}/api/condominium/register`,
+  loginCondominium: `${ngrokUrl}/api/condominium/login`,
   
-  parcelNotification: 'http://localhost:8080/api/parcel/notification',
-  parcelDelivery: 'http://localhost:8080/api/parcel/',
-  parcelGetAll: 'http://localhost:8080/api/parcel?status=NOT_DELIVERED',
+  parcelNotification: `${ngrokUrl}/api/parcel/notification`,
+  parcelDelivery: `${ngrokUrl}/api/parcel/`,
+  parcelGetAll: `${ngrokUrl}/api/parcel`,
   
-  createApartmentResident: 'http://localhost:8080/api/resident/vertical-condo',
-  createHouseResident: 'http://localhost:8080/api/resident/horizontal-condo',
-  deleteResident: 'http://localhost:8080/api/resident'
+  createApartmentResident: `${ngrokUrl}/api/resident/vertical-condo`,
+  createHouseResident: `${ngrokUrl}/api/resident/horizontal-condo`,
+  deleteResident: `${ngrokUrl}/api/resident`
 };

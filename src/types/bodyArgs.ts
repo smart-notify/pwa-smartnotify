@@ -6,4 +6,5 @@ export type bodyArgs = {
   apartmentNumber?: string,
   block?: string
   houseNumber?: string
+  labelContent?: string
 }

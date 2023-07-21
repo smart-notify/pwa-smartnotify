@@ -8,7 +8,6 @@ import MainMenu from "../components/MainMenu";
 import OptionsIcon from "../components/OptionsIcon";
 
 function MainScreen() {
-
   // Definindo estado de usuário
   const [resident, setResident] = useState<ParcelProps[]>([]);
 
@@ -19,7 +18,9 @@ function MainScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // debugger;
         const response = await fetch(apiUrls.parcelGetAll, {
+          method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -37,7 +38,36 @@ function MainScreen() {
     };
 
     fetchData();
-  }, []);
+  }, [token, apiUrls.parcelGetAll]);
+
+  // const fetchDataExample = async () => {
+  //   try {
+  //     // debugger;
+  //     var myHeaders = new Headers();
+  //     myHeaders.append(
+  //       "Authorization",
+  //       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWZhZWxAZ21haWwuY29tIiwiaWF0IjoxNjg5ODkzNTczLCJleHAiOjE2OTc2Njk1NzN9.p-mVg5-DKR95_mzUoadtf9aqJ4cE-g-1OlVTYPbMa4M"
+  //     );
+
+  //     await fetch(
+  //       "https://d263-2804-431-cfc3-c650-eca7-bd34-60ab-590d.ngrok-free.app/api/parcel",
+  //       {
+  //         method: "GET",
+  //         headers: myHeaders,
+  //         redirect: "follow",
+  //       }
+  //     )
+  //       .then((response) => response.text())
+  //       .then((result) => console.log(`RESULTADO: ${result}`))
+  //       .catch((error) => console.log("error", error));
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+
+  // fetchDataExample();
+
+  // console.log(fetchDataExample);
 
   return (
     <div className={classes.mainBackground}>

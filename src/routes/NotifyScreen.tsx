@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { apiUrls } from "../apis/apiUrls";
+
+import utilFunctions from "../utils/utilFunctions";
+
 import Tesseract from 'tesseract.js';
 import Webcam from "react-webcam";
 
@@ -14,7 +18,8 @@ function NotifyScreen() {
 
   const webcamRef = React.useRef<Webcam>(null);
   const [image, setImage] = useState("");
-  const [result, setResult] = useState("");
+
+  const token = utilFunctions.extractToken();
 
   const [facingMode] = React.useState(FACING_MODE_ENVIRONMENT);
 
@@ -26,14 +31,36 @@ function NotifyScreen() {
       setImage(imageSrc);
       img.src = imageSrc;
 
-      const result = await Tesseract.recognize(imageSrc);
-      console.log(result.data.text);
+      const tesseractResult = await Tesseract.recognize(imageSrc);
+      console.log(tesseractResult.data.text);
 
       // guardar resultado em uma variável
-      const resultado = result.data.text;
-      setResult(resultado);
+      const labelContent = tesseractResult.data.text;
+
+      try {
+        const bodyArgs = {
+          labelContent: labelContent
+        }
+
+        // Consumir API para validar o resultado
+        const response = await fetch(apiUrls.parcelNotification, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(bodyArgs),
+        })
+
+        if (response.status === 200) {
+          // Redirecionar para tela de login
+          window.location.href = "/main";
+        }
+        
+        } catch (error) {
+          
+        }
     }
-  
   }, [webcamRef]);
 
   let videoConstraints: MediaTrackConstraints = {
@@ -54,7 +81,7 @@ function NotifyScreen() {
         <div className={classes.webcamImg}>
           <div className={classes.imgInstructions}>
             <p>Com o celular na vertical, 
-            fotografe o bloco, apartamento ou número da casa.
+            fotografe o bloco, apartamento ou número da casa.  
             </p>
           </div>
           
