@@ -8,10 +8,12 @@ import validacao from "../assets/icones/icone-validacao.svg";
 import global from "../css-modules/Global.module.css";
 
 function ValidateScreen() {
-  const { id, residentDetails } = useParams<{ id: string; residentDetails: string }>();
+  const { id, residenceDetailsPattern, registrationCode } = useParams<{ id: string; residenceDetailsPattern: string; registrationCode: string }>();
   const [code, setCode] = useState("");
 
   const token = utilFunctions.extractToken();
+
+  console.log(`VALIDATE: id: ${id}, ${residenceDetailsPattern}`);
 
   const url = `http://localhost:8080/api/parcel/${id}/validation-code`;
 
@@ -53,7 +55,7 @@ function ValidateScreen() {
             alt="Validação"
             className={classes.validateIcon}
           />
-          <p>Insira o código de validação do(a) {residentDetails}:</p>
+          <p>Insira o código de validação da encomenda <br></br> Nº {registrationCode}, {residenceDetailsPattern}:</p>
           <form
             action=""
             autoComplete="off"

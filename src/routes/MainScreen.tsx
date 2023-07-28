@@ -79,7 +79,7 @@ function MainScreen() {
                     </span>
                   </div>
                 </div>
-                <OptionsIcon id={resident.id} residenceDetails={resident.residenceDetails} />
+                <OptionsIcon id={resident.id} residenceDetails={resident.residenceDetails} registrationCode={resident.registrationCode}/>
               </div>
             </li>
           );

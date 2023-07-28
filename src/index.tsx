@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         element: <NotifyScreen />,
       },
       {
-        path: '/validate/:id/:name',
+        path: '/validate/:id/:residenceDetailsPattern/:registrationCode',
         element: <ValidateScreen />,
       },
       {
