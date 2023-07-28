@@ -8,7 +8,7 @@ import validacao from "../assets/icones/icone-validacao.svg";
 import global from "../css-modules/Global.module.css";
 
 function ValidateScreen() {
-  const { id, name } = useParams<{ id: string; name: string }>();
+  const { id, residentDetails } = useParams<{ id: string; residentDetails: string }>();
   const [code, setCode] = useState("");
 
   const token = utilFunctions.extractToken();
@@ -53,7 +53,7 @@ function ValidateScreen() {
             alt="Validação"
             className={classes.validateIcon}
           />
-          <p>Insira o código de validação do(a) {name}:</p>
+          <p>Insira o código de validação do(a) {residentDetails}:</p>
           <form
             action=""
             autoComplete="off"

@@ -14,8 +14,6 @@ function AddResident() {
 
   const condominiumType = utilFunctions.extractCondominiumType();
   const condominiumName = utilFunctions.extractCondominiumName();
-  console.log(condominiumType);
-  console.log(condominiumName);
 
   return (
     <div>

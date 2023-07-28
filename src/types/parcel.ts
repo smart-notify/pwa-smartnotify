@@ -2,7 +2,6 @@
 
 export type ParcelProps = {
   id: string;
-  residentName: string;
-  residentEmail: string;
+  residenceDetails: string;
   registrationCode: string;
 }

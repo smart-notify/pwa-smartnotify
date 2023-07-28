@@ -25,7 +25,7 @@ function MainMenu() {
           <div className={classes.menuOptions}>
             <Link to="/account" className={classes.conta}>
               <img src={sindico} alt="Conta" />
-              <span>Conta</span>
+              <span>Condomínio</span>
             </Link>
           </div>
         </div>

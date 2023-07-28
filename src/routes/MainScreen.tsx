@@ -3,13 +3,21 @@ import { apiUrls } from "../apis/apiUrls";
 import { ParcelProps } from "../types/parcel";
 import utilFunctions from "../utils/utilFunctions";
 
+import typography from "../css-modules/Typography.module.css";
+
 import classes from "../css-modules/Main.module.css";
 import MainMenu from "../components/MainMenu";
 import OptionsIcon from "../components/OptionsIcon";
 
+import horizontalIcon from "../assets/icones/icone-casa.svg";
+import verticalIcon from "../assets/icones/icone-apartamento.svg";
+
+
 function MainScreen() {
   // Definindo estado de usuário
   const [resident, setResident] = useState<ParcelProps[]>([]);
+
+  const condominiumType = utilFunctions.extractCondominiumType();
 
   const token = utilFunctions.extractToken();
   console.log(token);
@@ -29,6 +37,7 @@ function MainScreen() {
         if (response.ok) {
           const data = await response.json();
           setResident(data);
+          console.log(data);
         } else {
           console.error("Error:", response.status);
         }
@@ -43,7 +52,7 @@ function MainScreen() {
   return (
     <div className={classes.mainBackground}>
       <div className={classes.mainHeader}>
-        <h1>Encomendas</h1>
+        <h1 className={typography.poppins_1_xl}>Encomendas</h1>
       </div>
       <ul className={classes.parcelList}>
         {resident.map((resident) => {
@@ -51,13 +60,26 @@ function MainScreen() {
             <li key={resident.id} className={classes.itemList}>
               <div className={classes.parcelContent}>
                 <div className={classes.parcelCard}>
-                  <div className={classes.parcelInfo}>
-                    <h2>{resident.residentName}</h2>
-                    <span>{resident.residentEmail}</span>
+                  <div className={classes.parcelIcon}>
+                    {condominiumType === "VERTICAL" && (
+                      <img src={verticalIcon} alt="Apartamento" />
+                    )}
+                    {condominiumType === "HORIZONTAL" && (
+                      <img src={horizontalIcon} alt="Casa" />
+                    )}
                   </div>
-                  <span>{resident.registrationCode}</span>
+                  <div className={classes.parcelInfo}>
+                    <h2 
+                    className={typography.poppins_2_m}>
+                      {resident.residenceDetails}
+                    </h2>
+                    <span 
+                    className={typography.roboto_1_s}>
+                      {resident.registrationCode}
+                    </span>
+                  </div>
                 </div>
-                <OptionsIcon id={resident.id} name={resident.residentName} />
+                <OptionsIcon id={resident.id} residenceDetails={resident.residenceDetails} />
               </div>
             </li>
           );
