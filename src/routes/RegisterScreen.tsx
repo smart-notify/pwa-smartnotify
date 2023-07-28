@@ -117,7 +117,7 @@ function RegisterScreen() {
       } 
     } catch (error) {
       console.error(error);
-    }
+    } 
   };
 
 
