@@ -47,14 +47,14 @@ function MainScreen() {
 
   return (
     <div className={classes.mainBackground}>
-      <div className={classes.mainHeader}>
         { resident.length > 0 
           ?
-          <h1 className={typography.poppins_1_xl}>Encomendas</h1>
+          <div className={classes.mainHeader}>
+            <h1 className={typography.poppins_1_xl}>Encomendas</h1>
+          </div>
           :
           null
         }
-      </div>
         {
           resident.length > 0 
           ? 
