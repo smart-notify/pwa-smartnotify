@@ -8,18 +8,16 @@ import typography from "../css-modules/Typography.module.css";
 import classes from "../css-modules/Main.module.css";
 import MainMenu from "../components/MainMenu";
 import ParcelList from "../components/ParcelList";
-
-
+import Alert from "../components/Alert";
 
 function MainScreen() {
   // Definindo estado de usuário
   const [resident, setResident] = useState<ParcelProps[]>([]);
 
-  const condominiumType = utilFunctions.extractCondominiumType();
-
   const token = utilFunctions.extractToken();
-  console.log(token);
 
+  const condominiumName = utilFunctions.extractCondominiumName();
+  
   // O useEffect é um hook que serve para executar efeitos colaterais em componentes funcionais, ou seja, ele dispara uma função toda vez que uma ou mais variáveis mudam de valor. Assim, é possível executar uma ação sempre que algo acontecer no componente.
   useEffect(() => {
     const fetchData = async () => {
@@ -50,9 +48,20 @@ function MainScreen() {
   return (
     <div className={classes.mainBackground}>
       <div className={classes.mainHeader}>
-        <h1 className={typography.poppins_1_xl}>Encomendas</h1>
+        { resident.length > 0 
+          ?
+          <h1 className={typography.poppins_1_xl}>Encomendas</h1>
+          :
+          null
+        }
       </div>
-      <ParcelList residentList={resident} />
+        {
+          resident.length > 0 
+          ? 
+          <ParcelList residentList={resident} /> 
+          : 
+          <Alert message="Sem encomendas no condomínio" />
+        }
       <MainMenu />
     </div>
   );

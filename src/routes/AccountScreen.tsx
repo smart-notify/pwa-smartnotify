@@ -5,6 +5,8 @@ import classes from "../css-modules/Account.module.css";
 import addResident from "../assets/icones/icone-adcResidente.svg";
 import rmvResident from "../assets/icones/icone-rmvResidente.svg";
 
+import typography from "../css-modules/Typography.module.css";
+
 function AccountScreen() {
   return (
     <div>
@@ -18,7 +20,7 @@ function AccountScreen() {
               src={addResident}
               alt="Adicionar residente"
             />
-            <span>Adicionar morador</span>
+            <span className={typography.roboto_2_m}>Adicionar morador</span>
           </Link>
         </div>
 
@@ -30,7 +32,19 @@ function AccountScreen() {
               src={rmvResident}
               alt="Remover residente"
             />
-            <span>Remover morador</span>
+            <span className={typography.roboto_2_m}>Remover morador</span>
+          </Link>
+        </div>
+
+        <div className={classes.accountRmvResidentContainer}>
+          <Link to="/logout"
+          className={classes.rmvResident}>
+            <img
+              className={classes.accountRmvResidentIcon}
+              src={rmvResident}
+              alt="Sair da conta"
+            />
+            <span className={typography.roboto_2_m}>Sair da conta</span>
           </Link>
         </div>
       </div>

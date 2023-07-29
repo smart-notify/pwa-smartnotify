@@ -7,6 +7,8 @@ import classes from "../css-modules/Validate.module.css";
 import validacao from "../assets/icones/icone-validacao.svg";
 import global from "../css-modules/Global.module.css";
 
+import typography from "../css-modules/Typography.module.css";
+
 function ValidateScreen() {
   const { id, residenceDetailsPattern, registrationCode } = useParams<{ id: string; residenceDetailsPattern: string; registrationCode: string }>();
   const [code, setCode] = useState("");
@@ -55,7 +57,9 @@ function ValidateScreen() {
             alt="Validação"
             className={classes.validateIcon}
           />
-          <p>Insira o código de validação da encomenda <br></br> Nº {registrationCode}, {residenceDetailsPattern}:</p>
+          <p className={typography.roboto_2_xs}>
+            Insira o código de validação da encomenda <br></br> Nº {registrationCode}, {residenceDetailsPattern}:
+          </p>
           <form
             action=""
             autoComplete="off"
