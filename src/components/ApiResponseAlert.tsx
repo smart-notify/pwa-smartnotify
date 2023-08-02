@@ -9,9 +9,10 @@ import failure from "../assets/icones/icone-falha.svg";
 interface ApiResponseAlertProps {
   isSuccess: boolean;
   message: string;
+  to: string;
 }
 
-function ApiResponseAlert( { message, isSuccess }: ApiResponseAlertProps) {
+function ApiResponseAlert( { message, isSuccess, to }: ApiResponseAlertProps) {
 
   return (
     <div className={classes.AlertContent}>
@@ -26,7 +27,7 @@ function ApiResponseAlert( { message, isSuccess }: ApiResponseAlertProps) {
         {message}
       </p>
 
-      <RedirectButton to="main" />
+      <RedirectButton to={to} />
     </div>
   )
 }

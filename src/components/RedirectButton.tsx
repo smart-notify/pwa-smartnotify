@@ -4,18 +4,15 @@ interface RedirectButtonProps {
   to: string;
 }
 
-function RedirectButton( { to }: RedirectButtonProps) {
-  
+function RedirectButton({ to }: RedirectButtonProps) {
   const handleClick = () => {
     window.location.href = `/${to}`;
-  }
+  };
 
   return (
-      <button 
-      className={global.button} 
-      onClick={handleClick}>
-        OK
-      </button>
+    <button className={global.button} onClick={handleClick}>
+      OK
+    </button>
   );
 }
 

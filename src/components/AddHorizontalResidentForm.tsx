@@ -3,6 +3,8 @@ import { apiUrls } from '../apis/apiUrls';
 import { bodyArgs } from '../types/bodyArgs';
 import utilFunctions from '../utils/utilFunctions';
 
+import Alert from "./ApiResponseAlert";
+
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
 
@@ -10,9 +12,9 @@ function AddHorizontalResidentForm() {
   const [residentName, setResidentName] = useState("");
   const [email, setEmail] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
+  const [error, setError] = useState(false);
 
   const token = utilFunctions.extractToken();
-  console.log(token);
 
   const handleResidentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setResidentName(event.target.value);
@@ -48,6 +50,8 @@ function AddHorizontalResidentForm() {
       if (response.status === 200) {
         // Redirecionar para tela de login
         window.location.href = "/account";
+      } else if (response.status != 200) {
+        setError(true);
       }
     } catch (error) {
       console.error(error);
@@ -61,6 +65,7 @@ function AddHorizontalResidentForm() {
 
   return (
     <div>
+      {error == false ? (
       <form
             onSubmit={handleSubmit}
             action=""
@@ -92,7 +97,14 @@ function AddHorizontalResidentForm() {
             />
 
             <input type="submit" value="Cadastrar" className={global.button} />
-          </form>
+      </form>
+      ) : (
+        <Alert
+          isSuccess={false}
+          message="Erro ao cadastrar morador. Tente novamente."
+          to="account"
+        />
+      )}
     </div>
   )
 }

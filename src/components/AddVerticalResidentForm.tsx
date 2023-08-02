@@ -3,6 +3,8 @@ import { apiUrls } from "../apis/apiUrls";
 import { bodyArgs } from "../types/bodyArgs";
 import utilFunctions from "../utils/utilFunctions";
 
+import Alert from "./ApiResponseAlert";
+
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
 
@@ -11,10 +13,9 @@ function AddVerticalResidentForm() {
   const [email, setEmail] = useState("");
   const [apartmentNumber, setApartmentNumber] = useState("");
   const [block, setBlock] = useState("");
+  const [error, setError] = useState(false);
 
   const token = utilFunctions.extractToken();
-
-  console.log(token);
 
   const handleResidentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setResidentName(event.target.value);
@@ -55,6 +56,8 @@ function AddVerticalResidentForm() {
       if (response.status === 200) {
         // Redirecionar para tela de login
         window.location.href = "/account";
+      } else if (response.status != 200) {
+        setError(true);
       }
     } catch (error) {
       console.error(error);
@@ -69,7 +72,8 @@ function AddVerticalResidentForm() {
 
   return (
     <div>
-      <form
+      { error == false ? (
+        <form
         onSubmit={handleSubmit}
         action=""
         autoComplete="off"
@@ -108,6 +112,13 @@ function AddVerticalResidentForm() {
 
         <input type="submit" value="Cadastrar" className={global.button} />
       </form>
+      ) : (
+        <Alert
+          isSuccess={false}
+          message="Código inválido. Tente novamente."
+          to="account"
+        />
+      )}
     </div>
   );
 }

@@ -21,8 +21,6 @@ function ValidateScreen() {
 
   const token = utilFunctions.extractToken();
 
-  console.log(`VALIDATE: id: ${id}, ${residenceDetailsPattern}`);
-
   const url = `http://localhost:8080/api/parcel/${id}/validation-code`;
 
   const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +50,6 @@ function ValidateScreen() {
       }
     } catch (error) {
       console.error(error);
-      setError(true);
     }
   };
 
@@ -91,7 +88,8 @@ function ValidateScreen() {
         ) : (
           <Alert
             isSuccess={false}
-            message="Código inválido. Tente novamente." 
+            message="Código inválido. Tente novamente."
+            to="main" 
           />
         )}
       </div>
