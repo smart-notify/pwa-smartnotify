@@ -1,23 +1,23 @@
-import classes from "../css-modules/Alert.module.css";
+import classes from "../css-modules/NoParcelMessage.module.css";
 
 import utilFunctions from "../utils/utilFunctions";
 
 import NoParcel from "../assets/icones/icone-semEncomendas.svg";
 
-interface AlertProps {
+interface NoParcelMessageProps {
   message: string;
 }
 
-function Alert({ message}: AlertProps) {
+function NoParcelMessage({ message}: NoParcelMessageProps) {
 
   return (
-    <div className={classes.AlertContent}>
+    <div className={classes.NoParcelMessageContent}>
       <img src={NoParcel} alt="Validação" className={classes.validateIcon} />
       <p>
-        Sem encomendas no condomínio 
+        {message}
       </p>
     </div>
   );
 }
 
-export default Alert;
+export default NoParcelMessage;

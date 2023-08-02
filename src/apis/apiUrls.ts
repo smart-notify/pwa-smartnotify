@@ -1,4 +1,4 @@
-const ngrokUrl = 'https://8ef3-2804-431-cfc2-cc4-b1de-422b-5ac7-9e54.ngrok-free.app';
+const ngrokUrl = 'https://c85d-2804-431-cfc2-cc4-5576-5cff-866-7f53.ngrok-free.app';
 const localUrl = 'http://localhost:8080';
 
 export const apiUrls = {
