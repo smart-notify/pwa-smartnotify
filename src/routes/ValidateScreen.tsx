@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import utilFunctions from "../utils/utilFunctions";
 
 import BackButton from "../components/BackButton";
-import Alert from "../components/NoParcelMessage";
+import Alert from "../components/ApiResponseAlert";
 
 import classes from "../css-modules/Validate.module.css";
 import validacao from "../assets/icones/icone-validacao.svg";
@@ -89,7 +89,10 @@ function ValidateScreen() {
             </form>
           </div>
         ) : (
-          <Alert message="Código inválido" />
+          <Alert
+            isSuccess={false}
+            message="Código inválido. Tente novamente." 
+          />
         )}
       </div>
     </div>
