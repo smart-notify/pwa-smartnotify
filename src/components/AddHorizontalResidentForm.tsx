@@ -1,9 +1,11 @@
-import {useState} from 'react'
-import { apiUrls } from '../apis/apiUrls';
-import { bodyArgs } from '../types/bodyArgs';
-import utilFunctions from '../utils/utilFunctions';
+import { useState } from "react";
+import { apiUrls } from "../apis/apiUrls";
+import { bodyArgs } from "../types/bodyArgs";
+import utilFunctions from "../utils/utilFunctions";
 
 import Alert from "./ApiResponseAlert";
+
+import addResidentWhite from "../assets/icones/icone-adcResidente-white.svg";
 
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
@@ -15,6 +17,7 @@ function AddHorizontalResidentForm() {
   const [error, setError] = useState(false);
 
   const token = utilFunctions.extractToken();
+  const condominiumName = utilFunctions.extractCondominiumName();
 
   const handleResidentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setResidentName(event.target.value);
@@ -30,7 +33,7 @@ function AddHorizontalResidentForm() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
+
     try {
       const bodyArgs: bodyArgs = {
         name: residentName,
@@ -66,7 +69,15 @@ function AddHorizontalResidentForm() {
   return (
     <div>
       {error == false ? (
-      <form
+        <div>
+          <div className={classes.horizontalChoice}>
+            <img src={addResidentWhite} alt="Adicionar morador" />
+            <label className={classes.horizontalLabel}>
+              <span>Condomínio Horizontal</span>
+              <span>{condominiumName}</span>
+            </label>
+          </div>
+          <form
             onSubmit={handleSubmit}
             action=""
             autoComplete="off"
@@ -97,7 +108,8 @@ function AddHorizontalResidentForm() {
             />
 
             <input type="submit" value="Cadastrar" className={global.button} />
-      </form>
+          </form>
+        </div>
       ) : (
         <Alert
           isSuccess={false}
@@ -106,7 +118,7 @@ function AddHorizontalResidentForm() {
         />
       )}
     </div>
-  )
+  );
 }
 
-export default AddHorizontalResidentForm
+export default AddHorizontalResidentForm;

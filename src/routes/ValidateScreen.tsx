@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import utilFunctions from "../utils/utilFunctions";
 
@@ -18,6 +18,8 @@ function ValidateScreen() {
   }>();
   const [code, setCode] = useState("");
   const [error, setError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const token = utilFunctions.extractToken();
 
@@ -43,13 +45,15 @@ function ValidateScreen() {
       });
 
       if (response.status === 200) {
-        // Redirecionar para tela de login
-        window.location.href = "/main";
+        setIsSuccess(true);
       } else if (response.status != 200) {
         setError(true);
       }
     } catch (error) {
       console.error(error);
+    }
+    finally{
+      setShowAlert(true);
     }
   };
 
@@ -57,7 +61,7 @@ function ValidateScreen() {
     <div>
       <div className={classes.validateContainer}>
         <BackButton to="/main" />
-        {error == false ? (
+        {showAlert == false && (
           <div className={classes.validateContent}>
             <img
               src={validacao}
@@ -85,13 +89,23 @@ function ValidateScreen() {
               <input type="submit" value="Validar" className={global.button} />
             </form>
           </div>
-        ) : (
-          <Alert
-            isSuccess={false}
-            message="Código inválido. Tente novamente."
-            to="main" 
-          />
         )}
+        { showAlert && (
+          isSuccess ? (
+            <Alert
+              isSuccess={true}
+              message="Encomenda validada com sucesso!"
+              to="main"
+            />
+          ) : (
+            <Alert
+              isSuccess={false}
+              message="Código inválido!"
+              to="main"
+            />
+          )
+        )
+        }
       </div>
     </div>
   );

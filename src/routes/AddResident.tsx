@@ -7,10 +7,17 @@ import addResidentWhite from "../assets/icones/icone-adcResidente-white.svg";
 
 import AddVerticalResidentForm from "../components/AddVerticalResidentForm";
 import AddHorizontalResidentForm from "../components/AddHorizontalResidentForm";
+import Alert from "../components/ApiResponseAlert";
 
 import utilFunctions from "../utils/utilFunctions";
 
 function AddResident() {
+
+  const [isChildSucceeded, setIsChildSucceeded] = useState<boolean>(false);
+
+  const handleDataFromChild = (data: boolean) => {
+    setIsChildSucceeded(data);
+  }
 
   const condominiumType = utilFunctions.extractCondominiumType();
   const condominiumName = utilFunctions.extractCondominiumName();
@@ -19,37 +26,26 @@ function AddResident() {
     <div>
       <BackButton to="/account" />
       <div className={classes.addResidentContainer}>
-        <div className={classes.addResidentContent}>
-          <img src={addResidentWhite} alt="Adicionar morador" />
+        { isChildSucceeded == false ? (
+          <div className={classes.addResidentContent}>
           <div className={classes.choiceOfCondominium}>
             {/* Verificar tipo de condomínio é igual a vertical */}
             {condominiumType === "VERTICAL" && (
-            <div className={classes.verticalChoice}>
-              <label className={classes.verticalLabel}>
-                <span>Condomínio Vertical</span>
-                <span>{condominiumName}</span>
-              </label>
-            </div>
+              <AddVerticalResidentForm sendDataToParent={handleDataFromChild}/>
             )}
             { /* Verificar tipo de condomínio é igual a horizontal */ }
             {condominiumType === "HORIZONTAL" && (
-              <div className={classes.horizontalChoice}>
-                <label className={classes.horizontalLabel}>
-                  <span>Condomínio Horizontal</span>
-                  <span>{condominiumName}</span>
-                </label>
-              </div>
+              <AddHorizontalResidentForm />
             )}
           </div>
-          {condominiumType === 'VERTICAL' && (
-        // Renderize o formulário para condomínio vertical
-        <AddVerticalResidentForm />
-      )}
-      {condominiumType === 'HORIZONTAL' && (
-        // Renderize o formulário para condomínio horizontal
-        <AddHorizontalResidentForm />
-      )}
         </div>
+        ) : (
+          <Alert
+            isSuccess={true}
+            message="Morador adicionado com sucesso!"
+            to="account"
+          />
+        )} 
       </div>
     </div>
   );

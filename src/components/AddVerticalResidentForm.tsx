@@ -5,10 +5,16 @@ import utilFunctions from "../utils/utilFunctions";
 
 import Alert from "./ApiResponseAlert";
 
+import addResidentWhite from "../assets/icones/icone-adcResidente-white.svg";
+
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
 
-function AddVerticalResidentForm() {
+interface AddVerticalResidentFormProps {
+  sendDataToParent: (data: boolean) => void;
+}
+
+function AddVerticalResidentForm( { sendDataToParent }: AddVerticalResidentFormProps) {
   const [residentName, setResidentName] = useState("");
   const [email, setEmail] = useState("");
   const [apartmentNumber, setApartmentNumber] = useState("");
@@ -16,6 +22,8 @@ function AddVerticalResidentForm() {
   const [error, setError] = useState(false);
 
   const token = utilFunctions.extractToken();
+
+  const condominiumName = utilFunctions.extractCondominiumName();
 
   const handleResidentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setResidentName(event.target.value);
@@ -56,8 +64,10 @@ function AddVerticalResidentForm() {
       if (response.status === 200) {
         // Redirecionar para tela de login
         window.location.href = "/account";
+        sendDataToParent(true);
       } else if (response.status != 200) {
         setError(true);
+        sendDataToParent(false);
       }
     } catch (error) {
       console.error(error);
@@ -72,46 +82,55 @@ function AddVerticalResidentForm() {
 
   return (
     <div>
-      { error == false ? (
-        <form
-        onSubmit={handleSubmit}
-        action=""
-        autoComplete="off"
-        className={classes.addResidentForm}
-      >
-        <input
-          onChange={handleResidentChange}
-          value={residentName}
-          type="text"
-          placeholder="Nome do morador"
-          required
-        />
+      {error == false ? (
+        <div>
+          <div className={classes.verticalChoice}>
+          <img src={addResidentWhite} alt="Adicionar morador" />
+            <label className={classes.verticalLabel}>
+              <span>Condomínio Vertical</span>
+              <span>{condominiumName}</span>
+            </label>
+          </div>
+          <form
+            onSubmit={handleSubmit}
+            action=""
+            autoComplete="off"
+            className={classes.addResidentForm}
+          >
+            <input
+              onChange={handleResidentChange}
+              value={residentName}
+              type="text"
+              placeholder="Nome do morador"
+              required
+            />
 
-        <input
-          onChange={handleEmailChange}
-          value={email}
-          type="email"
-          placeholder="Email do morador"
-          required
-        />
+            <input
+              onChange={handleEmailChange}
+              value={email}
+              type="email"
+              placeholder="Email do morador"
+              required
+            />
 
-        <input
-          onChange={handleNumberChange}
-          value={apartmentNumber}
-          type="text"
-          placeholder="Ex: Apto 101"
-          required
-        />
+            <input
+              onChange={handleNumberChange}
+              value={apartmentNumber}
+              type="text"
+              placeholder="Ex: Apto 101"
+              required
+            />
 
-        <input
-          onChange={handleBlockChange}
-          value={block}
-          type="text"
-          placeholder="Ex: Bloco 1"
-        />
+            <input
+              onChange={handleBlockChange}
+              value={block}
+              type="text"
+              placeholder="Ex: Bloco 1"
+            />
 
-        <input type="submit" value="Cadastrar" className={global.button} />
-      </form>
+            <input type="submit" value="Cadastrar" className={global.button} />
+          </form>
+        </div>
       ) : (
         <Alert
           isSuccess={false}
