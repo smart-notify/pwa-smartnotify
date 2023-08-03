@@ -17,7 +17,6 @@ function ValidateScreen() {
     registrationCode: string;
   }>();
   const [code, setCode] = useState("");
-  const [error, setError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -46,9 +45,7 @@ function ValidateScreen() {
 
       if (response.status === 200) {
         setIsSuccess(true);
-      } else if (response.status != 200) {
-        setError(true);
-      }
+      } 
     } catch (error) {
       console.error(error);
     }
