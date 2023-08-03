@@ -100,7 +100,7 @@ function ValidateScreen() {
           ) : (
             <Alert
               isSuccess={false}
-              message="Código inválido!"
+              message="Código inválido! Tente novamente."
               to="main"
             />
           )
