@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import voltar from "../assets/icones/icone-voltar.svg";
 import logo from "../assets/icones/logo.svg";
 
+import Alert from "../components/ApiResponseAlert";
+
 interface passwordsInput {
   password: string;
   confirmPassword: string;
@@ -23,6 +25,8 @@ function RegisterScreen() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [type, setType] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const [passwords, setPasswords] = useState<passwordsInput>({
     password: "",
@@ -112,79 +116,96 @@ function RegisterScreen() {
       });
       
       if (response.status === 200) {
-        // Redirecionar para tela de login
-        window.location.href = "/access";
+        setIsSuccess(true);
       } 
     } catch (error) {
       console.error(error);
-    } 
+    } finally {
+      setShowAlert(true);
+    }
   };
 
 
   return (
-    <div className={global.background}>
+    <div className={classes.registerContainer}>
       <Link to="/access" className={global.backButton}>
         <img src={voltar} width={40} height={40} alt="Logo" />
       </Link>
-      <div className={classes.registerContent}>
-        <img src={logo} width={140} height={100} alt="Logo" />
-        <form className={classes.registerForm} onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="email"
-            placeholder="Email do condomínio"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
+      {showAlert == false && (
+        <div className={classes.registerContent}>
+          <img src={logo} width={140} height={100} alt="Logo" />
+          <form className={classes.registerForm} onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email do condomínio"
+              value={email}
+              onChange={handleEmailChange}
+              required
+            />
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Insira a senha"
-            value={passwords.password}
-            onChange={onInputChange}
-            onBlur={validateInput}
-            required
-          />
-          {error.password && (
-            <span className={classes.redInput}>{error.password}</span>
-          )}
+            <input
+              type="password"
+              name="password"
+              placeholder="Insira a senha"
+              value={passwords.password}
+              onChange={onInputChange}
+              onBlur={validateInput}
+              required
+            />
+            {error.password && (
+              <span className={classes.redInput}>{error.password}</span>
+            )}
 
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Insira a confirmação da senha"
-            value={passwords.confirmPassword}
-            onChange={onInputChange}
-            onBlur={validateInput}
-            required
-          />
-          {error.confirmPassword && (
-            <span className={classes.redInput}>{error.confirmPassword}</span>
-          )}
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Insira a confirmação da senha"
+              value={passwords.confirmPassword}
+              onChange={onInputChange}
+              onBlur={validateInput}
+              required
+            />
+            {error.confirmPassword && (
+              <span className={classes.redInput}>{error.confirmPassword}</span>
+            )}
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Insira o nome do condomínio"
-            value={name}
-            onChange={handleNameChange}
-            required
-          />
+            <input
+              type="text"
+              name="name"
+              placeholder="Insira o nome do condomínio"
+              value={name}
+              onChange={handleNameChange}
+              required
+            />
 
-          <input
-            type="text"
-            name="type"
-            placeholder="Tipo vertical ou horizontal"
-            value={type}
-            onChange={handleTypeChange}
-            required
-          />
+            <input
+              type="text"
+              name="type"
+              placeholder="Tipo vertical ou horizontal"
+              value={type}
+              onChange={handleTypeChange}
+              required
+            />
 
-          <input type="submit" value="Cadastrar" className={global.button} />
-        </form>
-      </div>
+            <input type="submit" value="Cadastrar" className={global.button} />
+          </form>
+        </div>
+      )}
+      {showAlert &&
+        (isSuccess ? (
+          <Alert
+            isSuccess={true}
+            message="Condomínio cadastrado com sucesso!"
+            to="access"
+          />
+        ) : (
+          <Alert
+            isSuccess={false}
+            message="Email já cadastrado! Tente novamente."
+            to="register"
+          />
+        ))}
     </div>
   );
 }
