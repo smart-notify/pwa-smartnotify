@@ -26,7 +26,7 @@ function RmvResident() {
         {showAlert == false && (
           <div className={classes.removeResidentContent}>
             <img src={rmvResidentWhite} alt="Remover morador" />
-            <RemoveResidentForm 
+            <RemoveResidentForm
               funcSetIsSucess={handleSucessDataFromChild}
               funcSetShowAlert={handleShowAlertDataFromChild}
             />
@@ -37,13 +37,13 @@ function RmvResident() {
             <Alert
               isSuccess={true}
               message="Morador removido com sucesso!"
-              to="rmv-resident"
+              to="account"
             />
           ) : (
             <Alert
               isSuccess={false}
               message="Erro ao remover morador! Tente novamente."
-              to="account"
+              to="rmv-resident"
             />
           ))}
       </div>
