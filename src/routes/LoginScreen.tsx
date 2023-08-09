@@ -102,7 +102,7 @@ function Login() {
           <Alert
             isSuccess={false}
             message="Email ou senha incorretos!"
-            to="access"
+            to="login"
           />
         ))}
     </div>
