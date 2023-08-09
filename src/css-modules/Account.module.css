@@ -11,7 +11,8 @@
 }
 
 .accountAddResidentContainer,
-.accountRmvResidentContainer{
+.accountRmvResidentContainer,
+.accountLogoutContainer{
   display: flex;
   flex-direction: column;
   align-items: center;

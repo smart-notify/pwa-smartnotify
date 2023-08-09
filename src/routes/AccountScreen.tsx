@@ -13,8 +13,7 @@ function AccountScreen() {
       <div className={classes.accountContainer}>
         <BackButton to="/main" />
         <div className={classes.accountAddResidentContainer}>
-          <Link to="/add-resident"
-          className={classes.addResident}>
+          <Link to="/add-resident" className={classes.addResident}>
             <img
               className={classes.accountAddResidentIcon}
               src={addResident}
@@ -25,8 +24,7 @@ function AccountScreen() {
         </div>
 
         <div className={classes.accountRmvResidentContainer}>
-          <Link to="/rmv-resident"
-          className={classes.rmvResident}>
+          <Link to="/rmv-resident" className={classes.rmvResident}>
             <img
               className={classes.accountRmvResidentIcon}
               src={rmvResident}
@@ -36,9 +34,8 @@ function AccountScreen() {
           </Link>
         </div>
 
-        <div className={classes.accountRmvResidentContainer}>
-          <Link to="/logout"
-          className={classes.rmvResident}>
+        <div className={classes.accountLogoutContainer}>
+          <Link to="/access" className={classes.rmvResident}>
             <img
               className={classes.accountRmvResidentIcon}
               src={rmvResident}
