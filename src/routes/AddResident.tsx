@@ -61,7 +61,7 @@ function AddResident() {
             <Alert
               isSuccess={false}
               message="Erro ao cadastrar morador! Tente novamente."
-              to="account"
+              to="add-resident"
             />
           ))}
       </div>

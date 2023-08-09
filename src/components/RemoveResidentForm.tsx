@@ -6,7 +6,16 @@ import utilFunctions from "../utils/utilFunctions";
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
 
-function AddVerticalResidentForm() {
+interface RemoveResidentFormProps {
+  funcSetIsSucess: (data: boolean) => void;
+  funcSetShowAlert: (data: boolean) => void;
+}
+
+function AddVerticalResidentForm({
+  funcSetIsSucess,
+  funcSetShowAlert,
+} : RemoveResidentFormProps
+) {
   const [email, setEmail] = useState("");
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +27,6 @@ function AddVerticalResidentForm() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    debugger;
     try {
       const bodyArgs: bodyArgs = {
         email: email,
@@ -34,11 +42,12 @@ function AddVerticalResidentForm() {
       });
 
       if (response.status === 200) {
-        // Redirecionar para tela de login
-        window.location.href = "/account";
+        funcSetIsSucess(true);
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      funcSetShowAlert(true);
     }
 
     // Limpar os campos do formulário
