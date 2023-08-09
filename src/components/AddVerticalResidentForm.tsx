@@ -11,15 +11,20 @@ import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
 
 interface AddVerticalResidentFormProps {
-  sendDataToParent: (data: boolean) => void;
+  funcSetIsSucess: (data: boolean) => void;
+  funcSetShowAlert: (data: boolean) => void;
 }
 
-function AddVerticalResidentForm( { sendDataToParent }: AddVerticalResidentFormProps) {
+function AddVerticalResidentForm({
+  funcSetIsSucess,
+  funcSetShowAlert,
+}: AddVerticalResidentFormProps) {
   const [residentName, setResidentName] = useState("");
   const [email, setEmail] = useState("");
   const [apartmentNumber, setApartmentNumber] = useState("");
   const [block, setBlock] = useState("");
-  const [error, setError] = useState(false);
+  const [isSuccess, setIsSucess] = useState<boolean>(false);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
 
   const token = utilFunctions.extractToken();
 
@@ -62,15 +67,14 @@ function AddVerticalResidentForm( { sendDataToParent }: AddVerticalResidentFormP
       });
 
       if (response.status === 200) {
-        // Redirecionar para tela de login
-        window.location.href = "/account";
-        sendDataToParent(true);
-      } else if (response.status != 200) {
-        setError(true);
-        sendDataToParent(false);
+        setIsSucess(true);
+        funcSetIsSucess(true);
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setShowAlert(true);
+      funcSetShowAlert(true);
     }
 
     // Limpar os campos do formulário
@@ -81,63 +85,55 @@ function AddVerticalResidentForm( { sendDataToParent }: AddVerticalResidentFormP
   };
 
   return (
-    <div>
-      {error == false ? (
-        <div>
-          <div className={classes.verticalChoice}>
+    <div className={classes.verticalResidentContainer}>
+      <div className={classes.verticalResidentContent}>
+        <div className={classes.verticalChoice}>
           <img src={addResidentWhite} alt="Adicionar morador" />
-            <label className={classes.verticalLabel}>
-              <span>Condomínio Vertical</span>
-              <span>{condominiumName}</span>
-            </label>
-          </div>
-          <form
-            onSubmit={handleSubmit}
-            action=""
-            autoComplete="off"
-            className={classes.addResidentForm}
-          >
-            <input
-              onChange={handleResidentChange}
-              value={residentName}
-              type="text"
-              placeholder="Nome do morador"
-              required
-            />
-
-            <input
-              onChange={handleEmailChange}
-              value={email}
-              type="email"
-              placeholder="Email do morador"
-              required
-            />
-
-            <input
-              onChange={handleNumberChange}
-              value={apartmentNumber}
-              type="text"
-              placeholder="Ex: Apto 101"
-              required
-            />
-
-            <input
-              onChange={handleBlockChange}
-              value={block}
-              type="text"
-              placeholder="Ex: Bloco 1"
-            />
-
-            <input type="submit" value="Cadastrar" className={global.button} />
-          </form>
+          <label className={classes.verticalLabel}>
+            <span>Condomínio Vertical</span>
+            <span>{condominiumName}</span>
+          </label>
         </div>
-      ) : (
-        <Alert
-          isSuccess={false}
-          message="Código inválido. Tente novamente."
-          to="account"
-        />
-      )}
+        <form
+          onSubmit={handleSubmit}
+          action=""
+          autoComplete="off"
+          className={classes.addResidentForm}
+        >
+          <input
+            onChange={handleResidentChange}
+            value={residentName}
+            type="text"
+            placeholder="Nome do morador"
+            required
+          />
+
+          <input
+            onChange={handleEmailChange}
+            value={email}
+            type="email"
+            placeholder="Email do morador"
+            required
+          />
+
+          <input
+            onChange={handleNumberChange}
+            value={apartmentNumber}
+            type="text"
+            placeholder="Ex: Apto 101"
+            required
+          />
+
+          <input
+            onChange={handleBlockChange}
+            value={block}
+            type="text"
+            placeholder="Ex: Bloco 1"
+          />
+
+          <input type="submit" value="Cadastrar" className={global.button} />
+        </form>
+      </div>
     </div>
   );
 }

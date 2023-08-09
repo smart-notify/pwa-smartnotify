@@ -12,12 +12,16 @@ import Alert from "../components/ApiResponseAlert";
 import utilFunctions from "../utils/utilFunctions";
 
 function AddResident() {
+  const [isSuccess, setIsSucess] = useState<boolean>(false);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
 
-  const [isChildSucceeded, setIsChildSucceeded] = useState<boolean>(false);
+  const handleSucessDataFromChild = (data: boolean) => {
+    setIsSucess(data);
+  };
 
-  const handleDataFromChild = (data: boolean) => {
-    setIsChildSucceeded(data);
-  }
+  const handleShowAlertDataFromChild = (data: boolean) => {
+    setShowAlert(data);
+  };
 
   const condominiumType = utilFunctions.extractCondominiumType();
   const condominiumName = utilFunctions.extractCondominiumName();
@@ -26,26 +30,37 @@ function AddResident() {
     <div>
       <BackButton to="/account" />
       <div className={classes.addResidentContainer}>
-        { isChildSucceeded == false ? (
+        {showAlert == false && (
           <div className={classes.addResidentContent}>
-          <div className={classes.choiceOfCondominium}>
-            {/* Verificar tipo de condomínio é igual a vertical */}
-            {condominiumType === "VERTICAL" && (
-              <AddVerticalResidentForm sendDataToParent={handleDataFromChild}/>
-            )}
-            { /* Verificar tipo de condomínio é igual a horizontal */ }
-            {condominiumType === "HORIZONTAL" && (
-              <AddHorizontalResidentForm />
-            )}
+            <div className={classes.choiceOfCondominium}>
+              {/* Verificar tipo de condomínio é igual a vertical */}
+              {condominiumType === "VERTICAL" && (
+                <AddVerticalResidentForm
+                  funcSetIsSucess={handleSucessDataFromChild}
+                  funcSetShowAlert={handleShowAlertDataFromChild}
+                />
+              )}
+              {/* Verificar tipo de condomínio é igual a horizontal */}
+              {condominiumType === "HORIZONTAL" && (
+                <AddHorizontalResidentForm />
+              )}
+            </div>
           </div>
-        </div>
-        ) : (
-          <Alert
-            isSuccess={true}
-            message="Morador adicionado com sucesso!"
-            to="account"
-          />
-        )} 
+        )}
+        {showAlert &&
+          (isSuccess ? (
+            <Alert
+              isSuccess={true}
+              message="Morador cadastrado com sucesso!"
+              to="account"
+            />
+          ) : (
+            <Alert
+              isSuccess={false}
+              message="Erro ao cadastrar morador! Tente novamente."
+              to="account"
+            />
+          ))}
       </div>
     </div>
   );
