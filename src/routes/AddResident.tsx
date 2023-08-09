@@ -33,16 +33,19 @@ function AddResident() {
         {showAlert == false && (
           <div className={classes.addResidentContent}>
             <div className={classes.choiceOfCondominium}>
-              {/* Verificar tipo de condomínio é igual a vertical */}
+              {/* Verificar se tipo de condomínio é igual a vertical */}
               {condominiumType === "VERTICAL" && (
                 <AddVerticalResidentForm
                   funcSetIsSucess={handleSucessDataFromChild}
                   funcSetShowAlert={handleShowAlertDataFromChild}
                 />
               )}
-              {/* Verificar tipo de condomínio é igual a horizontal */}
+              {/* Verificar se tipo de condomínio é igual a horizontal */}
               {condominiumType === "HORIZONTAL" && (
-                <AddHorizontalResidentForm />
+                <AddHorizontalResidentForm
+                  funcSetIsSucess={handleSucessDataFromChild}
+                  funcSetShowAlert={handleShowAlertDataFromChild}
+                />
               )}
             </div>
           </div>

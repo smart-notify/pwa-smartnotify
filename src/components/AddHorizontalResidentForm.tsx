@@ -10,11 +10,21 @@ import addResidentWhite from "../assets/icones/icone-adcResidente-white.svg";
 import global from "../css-modules/Global.module.css";
 import classes from "../css-modules/AddResident.module.css";
 
-function AddHorizontalResidentForm() {
+interface AddHorizontalResidentFormProps {
+  funcSetIsSucess: (data: boolean) => void;
+  funcSetShowAlert: (data: boolean) => void;
+}
+
+
+function AddHorizontalResidentForm(
+  {
+    funcSetIsSucess,
+    funcSetShowAlert,
+  } : AddHorizontalResidentFormProps
+) {
   const [residentName, setResidentName] = useState("");
   const [email, setEmail] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
-  const [error, setError] = useState(false);
 
   const token = utilFunctions.extractToken();
   const condominiumName = utilFunctions.extractCondominiumName();
@@ -51,13 +61,12 @@ function AddHorizontalResidentForm() {
       });
 
       if (response.status === 200) {
-        // Redirecionar para tela de login
-        window.location.href = "/account";
-      } else if (response.status != 200) {
-        setError(true);
-      }
+        funcSetIsSucess(true);
+      } 
     } catch (error) {
       console.error(error);
+    } finally {
+      funcSetShowAlert(true);
     }
 
     // Limpar os campos do formulário
@@ -67,9 +76,8 @@ function AddHorizontalResidentForm() {
   };
 
   return (
-    <div>
-      {error == false ? (
-        <div>
+    <div className={classes.horizontalResidentContainer}>
+        <div className={classes.horizontalResidentContent}>
           <div className={classes.horizontalChoice}>
             <img src={addResidentWhite} alt="Adicionar morador" />
             <label className={classes.horizontalLabel}>
@@ -110,13 +118,6 @@ function AddHorizontalResidentForm() {
             <input type="submit" value="Cadastrar" className={global.button} />
           </form>
         </div>
-      ) : (
-        <Alert
-          isSuccess={false}
-          message="Erro ao cadastrar morador. Tente novamente."
-          to="account"
-        />
-      )}
     </div>
   );
 }

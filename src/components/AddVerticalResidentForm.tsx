@@ -23,8 +23,6 @@ function AddVerticalResidentForm({
   const [email, setEmail] = useState("");
   const [apartmentNumber, setApartmentNumber] = useState("");
   const [block, setBlock] = useState("");
-  const [isSuccess, setIsSucess] = useState<boolean>(false);
-  const [showAlert, setShowAlert] = useState<boolean>(false);
 
   const token = utilFunctions.extractToken();
 
@@ -67,13 +65,11 @@ function AddVerticalResidentForm({
       });
 
       if (response.status === 200) {
-        setIsSucess(true);
         funcSetIsSucess(true);
       }
     } catch (error) {
       console.error(error);
     } finally {
-      setShowAlert(true);
       funcSetShowAlert(true);
     }
 
