@@ -24,7 +24,7 @@ function MainScreen() {
       try {
         // debugger;
         const response = await fetch(apiUrls.parcelGetAll, {
-          method: "POST",
+          method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
