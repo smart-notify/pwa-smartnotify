@@ -14,8 +14,6 @@ function OptionsIcon({ id, residenceDetails, registrationCode }: OptionsIconProp
 
   const residenceDetailsPattern = residenceDetails.replace(/\s/g, ' ');
 
-  console.log(`OPTIONSICONS: id: ${id}, ${residenceDetailsPattern}`);
-
   return (
     <>
       <Link to={`/validate/${id}/${residenceDetailsPattern}/${registrationCode}`}>
