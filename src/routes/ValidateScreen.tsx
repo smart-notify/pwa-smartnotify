@@ -9,6 +9,7 @@ import classes from "../css-modules/Validate.module.css";
 import validacao from "../assets/icones/icone-validacao.svg";
 import global from "../css-modules/Global.module.css";
 import typography from "../css-modules/Typography.module.css";
+import { apiUrls } from "../apis/apiUrls";
 
 function ValidateScreen() {
   const { id, residenceDetailsPattern, registrationCode } = useParams<{
@@ -22,7 +23,8 @@ function ValidateScreen() {
 
   const token = utilFunctions.extractToken();
 
-  const url = `http://localhost:8080/api/parcel/${id}/validation-code`;
+  //const url = `http://localhost:8080/api/parcel/${id}/validation-code`;
+  const url = `${apiUrls.parcelDelivery}${id}/validation-code`;
 
   const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCode(event.target.value);
@@ -45,11 +47,10 @@ function ValidateScreen() {
 
       if (response.status === 200) {
         setIsSuccess(true);
-      } 
+      }
     } catch (error) {
       console.error(error);
-    }
-    finally{
+    } finally {
       setShowAlert(true);
     }
   };
@@ -87,8 +88,8 @@ function ValidateScreen() {
             </form>
           </div>
         )}
-        { showAlert && (
-          isSuccess ? (
+        {showAlert &&
+          (isSuccess ? (
             <Alert
               isSuccess={true}
               message="Encomenda validada com sucesso!"
@@ -100,9 +101,7 @@ function ValidateScreen() {
               message="Código inválido! Tente novamente."
               to="main"
             />
-          )
-        )
-        }
+          ))}
       </div>
     </div>
   );
