@@ -50,8 +50,7 @@ Um README é uma parte crucial da documentação de qualquer projeto, fornecendo
         - Toque em "Adicionar". O ícone do PWA agora estará disponível na tela inicial do seu dispositivo iOS.
 
 8. **Uso:**
-   - Instruções sobre como usar o Smartnotify.
-   - Exemplos de comandos ou fluxos de trabalho comuns.
+     <img src="docs/1. Tela Inicial" alt="Tela Inicial">
 
 9. **APIs e Integrações:**
    - O Aplicativo Web Progressivo Smartnotify consome o backend https://github.com/smart-notify/smartnotify
