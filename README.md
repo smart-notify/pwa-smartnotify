@@ -51,6 +51,16 @@ Um README é uma parte crucial da documentação de qualquer projeto, fornecendo
 
 8. **Uso:**
      - <img src="docs/1_tela_inicial.png" alt="Tela Inicial">
+     - <img src="docs/2_tela_cadastro_login.png" alt="Tela Inicial">
+     - <img src="docs/3_tela_cadastro.png" alt="Tela Inicial">
+     - <img src="docs/4_tela_de_login.png" alt="Tela Inicial">
+     - <img src="docs/5_tela Principal_sem_encomendas.png" alt="Tela Inicial">
+     - <img src="docs/6_tela Principal_com_encomendas.png" alt="Tela Inicial">
+     - <img src="docs/7_tela_de_validação.png" alt="Tela Inicial">
+     - <img src="docs/8_validação_de_encomendas.png" alt="Tela Inicial">
+     - <img src="docs/8.1_falha_na_validação_de_encomendas.png" alt="Tela Inicial">
+     - <img src="docs/8.2_sucesso_na_validação_de_encomendas.png" alt="Tela Inicial">
+     - <img src="docs/9_tela_do_síndico.png" alt="Tela Inicial">
 
 9. **APIs e Integrações:**
    - O Aplicativo Web Progressivo Smartnotify consome o backend https://github.com/smart-notify/smartnotify
