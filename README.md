@@ -50,17 +50,17 @@ Um README é uma parte crucial da documentação de qualquer projeto, fornecendo
         - Toque em "Adicionar". O ícone do PWA agora estará disponível na tela inicial do seu dispositivo iOS.
 
 8. **Uso:**
-     - <img src="docs/1_tela_inicial.png" alt="Tela Inicial">
-     - <img src="docs/2_tela_cadastro_login.png" alt="Tela Cadastro e Login">
-     - <img src="docs/3_tela_cadastro.png" alt="Tela Cadastro">
-     - <img src="docs/4_tela_de_login.png" alt="Tela Login">
-     - <img src="docs/5_tela Principal_sem_encomendas.png" alt="Tela Principal">
-     - <img src="docs/6_tela Principal_com_encomendas.png" alt="Tela Principal">
-     - <img src="docs/7_tela_de_validação.png" alt="Tela validação">
-     - <img src="docs/8_validação_de_encomendas.png" alt="Tela validação">
-     - <img src="docs/8.1_falha_na_validação_de_encomendas.png" alt="Tela falha na validação">
-     - <img src="docs/8.2_sucesso_na_validação_de_encomendas.png" alt="Tela sucesso na validação">
-     - <img src="docs/9_tela_do_síndico.png" alt="Tela síndico">
+     - <img src="docs/telas/1_tela_inicial.png" alt="Tela Inicial">
+     - <img src="docs/telas/2_tela_cadastro_login.png" alt="Tela Cadastro e Login">
+     - <img src="docs/telas/3_tela_cadastro.png" alt="Tela Cadastro">
+     - <img src="docs/telas/4_tela_de_login.png" alt="Tela Login">
+     - <img src="docs/telas/5_tela Principal_sem_encomendas.png" alt="Tela Principal">
+     - <img src="docs/telas/6_tela Principal_com_encomendas.png" alt="Tela Principal">
+     - <img src="docs/telas/7_tela_de_validação.png" alt="Tela validação">
+     - <img src="docs/telas/8_validação_de_encomendas.png" alt="Tela validação">
+     - <img src="docs/telas/8.1_falha_na_validação_de_encomendas.png" alt="Tela falha na validação">
+     - <img src="docs/telas/8.2_sucesso_na_validação_de_encomendas.png" alt="Tela sucesso na validação">
+     - <img src="docs/telas/9_tela_do_síndico.png" alt="Tela síndico">
 
 9. **APIs e Integrações:**
    - O Aplicativo Web Progressivo Smartnotify consome o backend https://github.com/smart-notify/smartnotify
