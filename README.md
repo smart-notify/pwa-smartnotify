@@ -23,30 +23,30 @@ Um README é uma parte crucial da documentação de qualquer projeto, fornecendo
    - Conexão a internet;
 
 6. **Instalação:**
-   ### No Android (Chrome):
-      1. **Abra o PWA no Navegador:**
+   - No Android (Chrome):
+      **Abra o PWA no Navegador:**
       - Acesse o site do PWA usando o Google Chrome no seu dispositivo Android.
 
-      2. **Verifique se é um PWA:**
+      **Verifique se é um PWA:**
       - Certifique-se de que o site é um PWA. O Chrome geralmente exibe um ícone de "+" ou "Instalar" na barra de endereço.
 
-      3. **Adicione à Tela Inicial:**
+      **Adicione à Tela Inicial:**
       - Toque no ícone de "+" ou "Instalar". O Chrome solicitará que você adicione o PWA à tela inicial do seu dispositivo.
 
-      4. **Confirme a Instalação:**
+      **Confirme a Instalação:**
       - Confirme a instalação adicionando o PWA à tela inicial. O ícone do PWA agora aparecerá como um aplicativo independente.
 
-   ### No iOS (Safari):
-      1. **Abra o PWA no Navegador:**
+  - No iOS (Safari):
+      **Abra o PWA no Navegador:**
       - Acesse o site do PWA usando o Safari no seu dispositivo iOS.
 
-      2. **Adicione à Tela Inicial:**
+      **Adicione à Tela Inicial:**
       - Toque no ícone de compartilhamento (quadrado com uma seta para cima) na parte inferior da tela.
 
-      3. **Adicione à Tela Inicial:**
+      **Adicione à Tela Inicial:**
       - Selecione "Adicionar à Tela de Início". O Safari solicitará que você dê um nome ao ícone.
 
-      4. **Confirme a Instalação:**
+      **Confirme a Instalação:**
       - Toque em "Adicionar". O ícone do PWA agora estará disponível na tela inicial do seu dispositivo iOS.
 
 8. **Uso:**
