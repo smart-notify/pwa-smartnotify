@@ -24,8 +24,8 @@ Um README é uma parte crucial da documentação de qualquer projeto, fornecendo
 
 6. **Instalação:**
    * No Android (Chrome):
-      **Abra o PWA no Navegador:**
-      - Acesse o site do PWA usando o Google Chrome no seu dispositivo Android.
+         **Abra o PWA no Navegador:**
+         - Acesse o site do PWA usando o Google Chrome no seu dispositivo Android.
 
       **Verifique se é um PWA:**
       - Certifique-se de que o site é um PWA. O Chrome geralmente exibe um ícone de "+" ou "Instalar" na barra de endereço.
